@@ -1,0 +1,818 @@
+/*
+Theme Name: Discover Travel
+Theme URI: http://underscores.me/
+Author: WPSP Theme
+Author URI: https://www.linkedin.com/in/sopheakpeas
+Description: Discover Travel is a professional tour operator mainly providing private, safe, hassle free, unforgettable journey and tailor-made tours in awesome destination for small group, family, couple, individual traveler who are looking for flexible, authentic, unique private tours.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: discovertravel
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Discover Travel is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Typography
+# Elements
+# Forms
+# Navigation
+  ## Links
+# Alignments
+# Media
+  ## Galleries
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust:     100%;
+}
+
+body {
+  margin: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+[hidden],
+template {
+  display: none;
+}
+
+a {
+  background-color: transparent;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+b,
+strong {
+  font-weight: bold;
+}
+
+dfn {
+  font-style: italic;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+img {
+  border: 0;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+figure {
+  margin: 1em 40px;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+pre {
+  overflow: auto;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+button {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+input {
+  line-height: normal;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+  border: 0;
+  padding: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+
+optgroup {
+  font-weight: bold;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+body {
+    font: 14px/21px 'Open Sans', sans-serif, Arial;
+    color: #222;
+    background-color: #f1f1f1;
+}
+input,
+button,
+select,
+textarea {
+  font-family: sans-serif;
+  font-size: inherit;
+  line-height: inherit;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}
+kbd {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #ffffff;
+  background-color: #333333;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+kbd kbd {
+  padding: 0;
+  font-size: 100%;
+  font-weight: bold;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: #333333;
+  background-color: #f5f5f5;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+blockquote:before {
+  font-family:'FontAwesome';   
+  font-size: 24px;
+  display: block;
+  margin-left: -20px;
+  content: "\f10d";
+  color: #222;
+}
+
+blockquote {
+  display: block;
+  font-family: Georgia, serif;
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 17.5px;
+  line-height: 26px;
+  color: #999;
+}
+
+blockquote footer,
+blockquote small,
+blockquote em,
+blockquote i,
+blockquote cite {
+    font-size: 80%;
+    font-style:italic;
+    line-height: 1.42857143;
+    color: #777;
+}
+
+blockquote cite {
+    font-size: 14px;
+    font-family: sans-serif;
+    font-style: normal;
+    line-height: 1.5em;
+    text-align: right;
+}
+
+blockquote > p { margin: 0; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+  color: #212121;
+  -ms-word-break: break-word;
+  word-break: break-word;
+  font-weight: 600;
+  margin: 6px 0px 6px 0px;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 40px;
+  margin-top: 33px;
+  margin-bottom: 23px;
+  letter-spacing: -0.02em;
+}
+h2 {
+  font-size: 27px;
+  line-height: 38px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+h3 {
+  font-size: 22px;
+  line-height: 30px;
+  margin-top: 27px;
+  margin-bottom: 17px;
+}
+h4 {
+  font-size: 19px;
+  line-height: 29px;
+  margin-top: 24px;
+  margin-bottom: 14px;
+}
+h5 {
+  font-size: 17px;
+  line-height: 25px;
+  margin-top: 21px;
+  margin-bottom: 11px;
+}
+h6 {
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 21px;
+  margin-bottom: 11px;
+}
+
+
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+*,
+*:before,
+*:after { /* apply a natural box layout model to all elements; see http://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+    -webkit-box-sizing: border-box; /* Not needed for modern webkit but still used by Blackberry Browser 7.0; see http://caniuse.com/#search=box-sizing */
+    -moz-box-sizing:    border-box; /* Still needed for Firefox 28; see http://caniuse.com/#search=box-sizing */
+    box-sizing:         border-box;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+p, ul, ol, dl, table, fieldset, blockquote, pre, code {
+  margin: 0 0 21px;
+}
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+address {
+    font-style: italic;
+    display: block;
+    margin: 0 0 1.5em;
+}
+
+b,
+strong {
+    font-weight: bold;
+}
+figure {
+  margin: 0;
+}
+img {
+  vertical-align: middle;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+mark {
+  background-color: #fcf8e3;
+  padding: .2em;
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+ul {
+    list-style: disc;
+}
+
+ul ul {
+    list-style: square;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+ol ol {
+    list-style: upper-alpha;
+}
+
+ol ol ol {
+    list-style: lower-roman;
+}
+
+ol ol ol ol {
+    list-style: lower-alpha;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+    margin-bottom: 0;
+}
+
+ul,
+ol {
+    margin: 0 0 1.5em 2em;
+    padding: 0;
+}
+
+dl {
+    margin: 0 0 1.5em 0;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin: 0 0 0.75em 1.5em;
+}
+dt,
+dd {
+  line-height: 1.42857143;
+}
+
+iframe {
+    display: block;
+    border:none;
+}
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+table {
+    margin: 0 0 1.5em;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td,
+th {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+}
+
+th {
+    /*background-color: #ededed;*/
+    font-weight :bold;
+    color: #333;
+}
+
+tfoot th {
+    border-top: none;
+}
+table caption {
+    padding: 0 0 5px 0;
+    width: auto;
+    font-style:italic;
+    text-align: right;
+    font-size: 12px;
+}
+table tbody tr:nth-child(2n+1){
+    background-color: #f7f7f7;
+}
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	border: 1px solid;
+	border-color: #ccc #ccc #bbb;
+	border-radius: 3px;
+	background: #183c19;
+	box-shadow: inset 0 1px 0 rgba(24, 60, 25, 0.5), inset 0 15px 17px rgba(24, 60, 25, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
+	color: rgba(255, 255, 255, .8);
+	line-height: 1;
+	padding: .6em 1em .4em;
+	text-shadow: 0 1px 0 rgba(0, 18, 0, 0.8);
+  text-transform: uppercase;
+}
+input[type="search"] {
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing:    border-box;
+  box-sizing:         border-box;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+	border-color: #ccc #bbb #aaa;
+	box-shadow: inset 0 1px 0 rgba(32, 79, 33, 0.8), inset 0 15px 17px rgba(32, 79, 33, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02);
+}
+
+button:focus,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus,
+button:active,
+input[type="button"]:active,
+input[type="reset"]:active,
+input[type="submit"]:active {
+	border-color: #aaa #bbb #bbb;
+	box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+textarea {
+	color: #666;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+textarea:focus {
+	color: #111;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"] {
+	padding: 3px;
+}
+
+textarea {
+	padding-left: 3px;
+	width: 100%;
+}
+
+
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Links
+--------------------------------------------------------------*/
+a {
+  color: #383838;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #26ad5e;
+  text-decoration: none;
+  outline: 0;
+}
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+img.alignleft,
+img.alignright,
+img.aligncenter {
+    margin-bottom: 12px;
+}
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Post images and Caption
+--------------------------------------------------------------*/
+img[class*="wp-image-"] {
+  border: 1px solid white;
+  padding: 8px;
+  background: #f2f2f2;
+}
+.wp-caption {
+  border: none;
+  text-align: left;
+  background-color: #f8f8f8;
+  border: 1px solid #E5E5E5;
+  margin-bottom: 1em;
+  max-width: 100%;
+}
+
+.wp-caption-dt { margin: 0; }
+
+.wp-caption .wp-caption-text,
+.wp-caption-dd {
+  color: #555;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.5;
+  padding: 5px;
+  margin-bottom: 0;
+}
+
+.mceTemp + ul,
+.mceTemp + ol  {
+  list-style-position: inside;
+}
+
+.wp-caption img[class*="wp-image-"],
+.wp-caption img.wp-post-image {
+  border:none;
+  background-color: transparent;
+  display: block;
+  margin: 0;
+  width: 100%;
+}
+/*--------------------------------------------------------------
+## WP Gallery
+--------------------------------------------------------------*/
+.gallery { 
+  margin: 0 auto 18px; 
+  overflow: hidden;
+}
+.gallery .gallery-item {
+  float: left;
+  margin-top: 0;
+  text-align: center;
+  /*width: 33%;*/
+}
+.gallery a {
+  outline: none;
+}
+.gallery-columns-2 .gallery-item,
+.gallery-columns-3 .gallery-item,
+.gallery-columns-4 .gallery-item,
+.gallery-columns-5 .gallery-item { width: 50%; }
+.gallery img {
+  border: 1px solid white;
+  padding: 2px;
+  background: #f2f2f2;
+}
+.gallery img:hover {
+  background: #8dc63f;
+}
+/*.gallery-columns-2 .attachment-medium {
+  max-width: 92%;
+  height: auto;
+}
+.gallery-columns-4 .attachment-thumbnail {
+  max-width: 84%;
+  height: auto;
+}*/
+.gallery .gallery-caption {
+  color: #888;
+  font-size: 12px;
+  margin: 0 0 12px;
+}
+.gallery dl, .gallery dt { margin: 0; }
+.gallery br+br { display: none; }
+
+@media only screen and (min-width: 768px) {
+    .gallery-columns-2 .gallery-item { width: 50%; }
+    .gallery-columns-3 .gallery-item { width: 33.33333333%; }
+    .gallery-columns-4 .gallery-item { width: 25%; }
+    .gallery-columns-5 .gallery-item { width: 20%; }
+    .gallery img {
+      padding: 8px;
+    }
+}
