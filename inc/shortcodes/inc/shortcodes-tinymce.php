@@ -15,15 +15,15 @@ function wpsp_shortcodes_register_mce_button_3( $buttons ) {
 
 	array_push( $buttons, 'col' );
 	array_push( $buttons, 'btn' );
+	array_push( $buttons, 'accordion' );
 	/*array_push( $buttons, 'horz_rule' );
 	array_push( $buttons, 'email_encoder' );
-	array_push( $buttons, 'accordion' );
 	array_push( $buttons, 'toggle' );
 	array_push( $buttons, 'tab' );
 	array_push( $buttons, 'team' );
 	array_push( $buttons, 'photogallery' );
 	array_push( $buttons, 'post' );*/
-	//array_push( $buttons, 'tour_inclusion' );
+	array_push( $buttons, 'tour_inclusion' );
 
     return $buttons;
 }
@@ -79,9 +79,9 @@ function wpsp_shortcodes_add_tinymce_plugin($plugin_array) {
 	$plugin_array['btn']			= ED_JS_URL . 'ed-button.js';
 	$plugin_array['horz_rule']		= ED_JS_URL . 'ed-hr.js';
 	$plugin_array['email_encoder']	= ED_JS_URL . 'ed-email-encoder.js';
-	//$plugin_array['tour_inclusion']	= ED_JS_URL . 'ed-tour-inclusion.js';
-	/*$plugin_array['accordion']		= ED_JS_URL . 'ed-accordion.js';
-	$plugin_array['toggle']			= ED_JS_URL . 'ed-toggle.js';
+	$plugin_array['tour_inclusion']	= ED_JS_URL . 'ed-tour-inclusion.js';
+	$plugin_array['accordion']		= ED_JS_URL . 'ed-accordion.js';
+	/*$plugin_array['toggle']			= ED_JS_URL . 'ed-toggle.js';
 	$plugin_array['tab']			= ED_JS_URL . 'ed-tab.js';*/
 	/*if ( $post_type == 'page' ) {
 		$plugin_array['team']				= ED_JS_URL . 'ed-team.js';

@@ -1174,6 +1174,9 @@ article.format-gallery:before {
     background-color: #fff;
     margin-top: 30px;
 }
+.itenerary-head .site-slider {
+    border: 4px solid #fff;
+}
 /* tour title */
 .tour-title {
     background-color: #26ad5e;

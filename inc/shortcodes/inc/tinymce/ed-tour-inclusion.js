@@ -6,14 +6,17 @@
      tinymce.create( 'tinymce.plugins.tour_inclusion', {
         init : function( ed, url ) {
              ed.addButton( 'tour_inclusion', {
-                title : 'Insert Button',
-                image : url + '/ed-icons/callout-box.png',
+                title : 'Tour inclusion',
+                image : url + '/ed-icons/list.png',
                 onclick : function() {
                 	var dummy = '<ul><li>Insert your content here.</li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li><li>Vivamus leo ante, consectetur sit amet vulputate vel, dapibus sit amet lectus.</li></ul>';
-                	var nl = '<br /><br />';
-					var shortcode = '';
-					shortcode = '[tour_inclusion type="included"]' + dummy + '[/tour_inclusion]' + nl + '[tour_inclusion type="excluded"]' + dummy + '[/tour_inclusion]';
-					ed.execCommand('mceInsertContent', 0, shortcode);
+                    var nl = '<br /><br />';
+                    var shortcode = '';
+                    shortcode += '[tour_inclusion]' + nl;
+                    shortcode += '[inclusion_section type="included"]' + dummy + '[/inclusion_section]' + nl;
+                    shortcode += '[inclusion_section type="excluded"]' + dummy + '[/inclusion_section]' + nl;
+                    shortcode += '[/tour_inclusion]';
+                    ed.execCommand('mceInsertContent', 0, shortcode);
                  }
              });
          },

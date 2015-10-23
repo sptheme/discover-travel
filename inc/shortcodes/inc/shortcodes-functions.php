@@ -25,7 +25,8 @@ function add_script_style_sc() {
 function wpsp_add_shortcodes() {
 	add_shortcode( 'col', 'col' );
 	add_shortcode( 'button', 'wpsp_button_shortcode' );
-	//add_shortcode( 'tour_inclusion', 'wpsp_tour_inclusion_shortcode' );
+	add_shortcode( 'tour_inclusion', 'wpsp_tour_inclusion_shortcode' );
+	add_shortcode( 'inclusion_section', 'wpsp_inclusion_section_shortcode' );
 	//add_shortcode( 'hr', 'wpsp_hr_shortcode_shortcode' );
 	//add_shortcode( 'email_encoder', 'wpsp_email_encoder_shortcode' );
 	// add_shortcode( 'accordion', 'wpsp_accordion_shortcode' );
@@ -365,16 +366,26 @@ if ( ! function_exists( 'wpsp_tour_inclusion_shortcode' ) ) :
  *
  */
 function wpsp_tour_inclusion_shortcode( $atts, $content = null ) {
-	extract( shortcode_atts( array(
-			'type' => 'included'
-		), $atts ) );
-	//$out = '<div class="tour-inclusion"><div class="row">';
 	
-		$out = '<div class="row"><div class="' . $type . ' col-md-6">';
-		$out .= do_shortcode( $content ); 
-		$out .= '</div></div>';
+	/*extract(shortcode_atts(array(
+		'type' => 'included'
+	), $atts));*/
+
+	return '<div class="tour-inclusion"><div class="row">' . return_clean($content). '</div></div>';
+}
+endif;
+
+if ( ! function_exists( 'wpsp_inclusion_section_shortcode' ) ) :
+/**
+ * Inclusion section
+ */
+function wpsp_inclusion_section_shortcode($atts, $content = null) {
+
+	extract(shortcode_atts(array(
+		'type' => null,		
+	), $atts));
+
+	return '<div class="' . $type . ' col-md-6">' . return_clean($content) . '</div>';
 	
-	//$out .= '</div></div>';
-	return $out;
 }
 endif;

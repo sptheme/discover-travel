@@ -19,7 +19,7 @@
 	$embed_map = get_post_meta( $post->ID, 'wpsp_embed_map', true );  ?>
 
 <div class="container">
-    <div class="itenerary-head">
+    <div class="itenerary-head box-shadow">
         <?php wpsp_tour_slideshow(); 
             //get_template_part( 'partials/tour-slideshow' ); ?>
 

@@ -361,7 +361,7 @@ function custom_meta_boxes() {
 				'type'		=> 'gallery',
 				'std'		=> '',
 				'desc'		=> 'Upload photos slideshow for this tour with supported file: .jpg, .gif and .png',
-			),
+			)
 		)
 	);
 
