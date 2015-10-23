@@ -27,6 +27,8 @@ function wpsp_add_shortcodes() {
 	add_shortcode( 'button', 'wpsp_button_shortcode' );
 	add_shortcode( 'tour_inclusion', 'wpsp_tour_inclusion_shortcode' );
 	add_shortcode( 'inclusion_section', 'wpsp_inclusion_section_shortcode' );
+	add_shortcode( 'tour_itinerary', 'wpsp_tour_itinerary_shortcode' );
+	add_shortcode( 'itinerary_section', 'wpsp_itinerary_section_shortcode' );
 	//add_shortcode( 'hr', 'wpsp_hr_shortcode_shortcode' );
 	//add_shortcode( 'email_encoder', 'wpsp_email_encoder_shortcode' );
 	// add_shortcode( 'accordion', 'wpsp_accordion_shortcode' );
@@ -366,10 +368,6 @@ if ( ! function_exists( 'wpsp_tour_inclusion_shortcode' ) ) :
  *
  */
 function wpsp_tour_inclusion_shortcode( $atts, $content = null ) {
-	
-	/*extract(shortcode_atts(array(
-		'type' => 'included'
-	), $atts));*/
 
 	return '<div class="tour-inclusion"><div class="row">' . return_clean($content). '</div></div>';
 }
@@ -386,6 +384,34 @@ function wpsp_inclusion_section_shortcode($atts, $content = null) {
 	), $atts));
 
 	return '<div class="' . $type . ' col-md-6">' . return_clean($content) . '</div>';
+	
+}
+endif;
+
+if ( ! function_exists( 'wpsp_tour_itinerary_shortcode' ) ) :
+/**
+ * Tour itinerary shortcode
+ *
+ * Options: Display tour itinerary
+ *
+ */
+function wpsp_tour_itinerary_shortcode( $atts, $content = null ) {
+
+	return '<article class="itenerary-item">' . return_clean($content). '</article>';
+}
+endif;
+
+if ( ! function_exists( 'wpsp_itinerary_section_shortcode' ) ) :
+/**
+ * Itinerary section
+ */
+function wpsp_itinerary_section_shortcode($atts, $content = null) {
+
+	extract(shortcode_atts(array(
+		'title' => 'Day of itinerary goes here',		
+	), $atts));
+
+	return '<h4 class="itenerary-title">' . $title . '</h4><div class="itenerary-desc">' . return_clean($content) . '</div>';
 	
 }
 endif;

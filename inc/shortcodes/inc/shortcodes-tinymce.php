@@ -23,6 +23,7 @@ function wpsp_shortcodes_register_mce_button_3( $buttons ) {
 	array_push( $buttons, 'team' );
 	array_push( $buttons, 'photogallery' );
 	array_push( $buttons, 'post' );*/
+	array_push( $buttons, 'tour_itinerary' );
 	array_push( $buttons, 'tour_inclusion' );
 
     return $buttons;
@@ -79,8 +80,9 @@ function wpsp_shortcodes_add_tinymce_plugin($plugin_array) {
 	$plugin_array['btn']			= ED_JS_URL . 'ed-button.js';
 	$plugin_array['horz_rule']		= ED_JS_URL . 'ed-hr.js';
 	$plugin_array['email_encoder']	= ED_JS_URL . 'ed-email-encoder.js';
-	$plugin_array['tour_inclusion']	= ED_JS_URL . 'ed-tour-inclusion.js';
 	$plugin_array['accordion']		= ED_JS_URL . 'ed-accordion.js';
+	$plugin_array['tour_itinerary']	= ED_JS_URL . 'ed-tour-itinerary.js';
+	$plugin_array['tour_inclusion']	= ED_JS_URL . 'ed-tour-inclusion.js';
 	/*$plugin_array['toggle']			= ED_JS_URL . 'ed-toggle.js';
 	$plugin_array['tab']			= ED_JS_URL . 'ed-tab.js';*/
 	/*if ( $post_type == 'page' ) {
