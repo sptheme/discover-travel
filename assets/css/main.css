@@ -1181,7 +1181,7 @@ article.format-gallery:before {
     padding: 10px;
 }
 .tour-title .day-amount {
-    background-color: #242e30;
+    background-color: #ed9f23;
     color: #fff;
     padding: 2px 10px;
     text-transform: uppercase;
@@ -1358,6 +1358,321 @@ h4.itenerary-title {
 @media only screen and (min-width: 992px) {
     .tour-meta .inquiry {
         text-align: right;
+    }
+}
+/* ------------------------------------------------------------
+## Tour Inquiry
+--------------------------------------------------------------*/
+#tour-inquiry-form h2.popup-title {
+    color:#26ad5e;
+}
+#tour-inquiry-form fieldset {
+    margin: 15px 0;
+}
+#tour-inquiry-form legend {
+    font-size: 18px;
+    color:#26ad5e;
+    border-bottom: 1px solid #26ad5e;
+    width: 100%;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+#tour-inquiry-form input[type="text"],
+#tour-inquiry-form input[type="email"],
+#tour-inquiry-form select {
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+}
+#tour-inquiry-form textarea {
+    width: 100%;
+}
+#tour-inquiry-form input[type="submit"] {
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 10px 15px;
+    text-shadow: none;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+    -moz-box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+
+    background: #8dc63f;
+    color: #fff;
+}
+#tour-inquiry-form input[type="submit"]:hover {
+    background-color: #26ad5e;
+}
+
+/* error */
+#tour-inquiry-form input[type="text"].error,
+#tour-inquiry-form input[type="email"].error,
+#tour-inquiry-form select.error {
+    border:1px solid #db4437;
+}
+#tour-inquiry-form label.error {
+    display: none!important;
+}
+/* Result */
+#result {
+    text-align: center;
+}
+#result h3 {
+    color:#4caf50;
+}
+#result .hotline {
+    color:#FF0000;
+}
+#result .note {
+    margin-top: 20px;
+    padding: 5px;
+    background-color: #FCF5A2;
+    font-size: 12px;
+    -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+/* People */
+.people {
+    width: 130px;
+    margin: 10px 0;
+    float: left;
+}
+.people label {
+    width: 100%;
+    display: block;
+}
+.people .solo-icon,
+.people .couple-icon,
+.people .family-icon,
+.people .group-icon {
+    background: url(../images/sprite.png) no-repeat;
+    cursor: pointer;
+    height: 36px;
+    display: block;
+}
+.people .solo-icon {
+    width: 18px;
+    margin: 0 0 0 35px;
+    background-position: -10px -704px;
+}
+.people .couple-icon {
+    width: 26px;
+    margin: 0 0 0 35px;
+    background-position: -46px -704px;
+}
+.people .family-icon {
+    width: 44px;
+    margin: 0 0 0 35px;
+    background-position: -90px -704px;
+}
+.people .group-icon {
+    width: 50px;
+    margin: 0 0 0 35px;
+    background-position: -155px -704px;
+}
+.people.active .solo-icon {
+    background-position: -10px -759px;
+}
+.people.active .couple-icon {
+    background-position: -46px -759px;
+}
+.people.active .family-icon {
+    background-position: -90px -759px;
+}
+.people.active .group-icon {
+    background-position: -155px -759px;
+}
+/* Tour class */
+.tour-class {
+    width: 150px;
+    margin: 10px 0;
+    float: left;
+}
+.tour-class label {
+    width: 100%;
+    display: block;
+}
+.tour-class .economy-icon,
+.tour-class .deluxe-icon,
+.tour-class .luxury-icon {
+    background: url(../images/sprite.png) no-repeat;
+    cursor: pointer;
+    width: 50px;
+    height: 48px;
+    display: block;
+    margin-left: 35px;
+}
+.tour-class .economy-icon {
+    background-position: -236px -694px;
+}
+.tour-class .deluxe-icon {
+    background-position: -305px -694px;
+}
+.tour-class .luxury-icon {
+    background-position: -374px -694px;
+}
+.tour-class.active .economy-icon {
+    background-position: -236px -749px;
+}
+.tour-class.active .deluxe-icon {
+    background-position: -305px -749px;
+}
+.tour-class.active .luxury-icon {
+    background-position: -374px -749px;
+}
+input[type=radio].default-radio {
+    display: none;
+}
+span.radio-image {
+    background: url(../images/radio.png) no-repeat;
+    -webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;
+}
+.active span.radio-image {
+    background: url(../images/radio.png) 0 -27px no-repeat;
+}
+span.radio-image {
+    padding-left: 29px;
+    height: 20px;
+    display: inline-block;
+    line-height: 20px;
+    background-repeat: no-repeat;
+    background-position: 0 1px;
+    font-size: 16px;
+    vertical-align: middle;
+    cursor: pointer;
+    margin: 5px 0 5px 10px;
+}
+/* People Addon */
+.people-addon {
+    display: none;
+    clear: both;
+    width: 260px;
+    background: #f6f6f6;
+    -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+.people-addon div {
+    float: left;
+    margin: 5px;
+}
+.people-addon select.number {
+    width: 72px;
+    height: 25px;
+    text-indent: 5px;
+    background: #fff;
+    line-height: 15px;
+    color: #666;
+    border: 1px solid #e4e4e4;
+    -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+.people-addon select + p {
+    font-size: 11px;
+    margin-bottom: 0;
+}
+/* Departure date */
+.departure-date {
+    background: url(../images/sprite.png) 105% -795px no-repeat;
+    cursor: pointer;
+    padding-right: 20px;
+}
+.departure-date,
+.flexible-date label {
+    float: left;
+    margin: 10px 0;
+}
+.manual-date {
+    display: none;
+}
+.active .manual-date {
+    display: block;
+}
+/* Personal Info */
+#personal-info div[class*="col-"] {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+    #tour-inquiry-form fieldset {
+        padding: 30px 0 15px;
+    }
+    .people {
+        width: 170px;
+    }
+    .people label,
+    .tour-class label {
+        padding-left: 25px;
+    }
+    .tour-class {
+        width: 225px;
+    }
+    .people-addon {
+        float: right;
+    }
+    .people-addon.is-family {
+        margin-right: 125px;
+    }
+    .departure-date,
+    .flexible-date label,
+    .manual-date {
+        width: 225px!important;
+    }
+    .flexible-date label {
+        text-align: right;
+        padding-right: 10px;
+        cursor: pointer;
+    }
+    .manual-date {
+        margin-top: 10px;
+    }
+}
+@media only screen and (min-width: 992px) {
+    .people {
+        width: 220px;
+    }
+    .people label {
+        padding-left: 50px;
+    }
+    .tour-class {
+        width: 300px;
+    }
+    .tour-class label {
+        padding-left: 50px;
+    }
+    .people-addon.is-family {
+        margin-right: 220px;
+    }
+    .departure-date,
+    .flexible-date label,
+    .manual-date {
+        width: 300px!important;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .people {
+        width: 275px;
+    }
+    .people label {
+        padding-left: 75px;
+    }
+    .tour-class {
+        width: 365px;
+    }
+    .tour-class label {
+        padding-left: 75px;
+    }
+    .people-addon.is-family {
+        margin-right: 275px;
+    }
+    .departure-date,
+    .flexible-date label,
+    .manual-date {
+        width: 365px!important;
     }
 }
 

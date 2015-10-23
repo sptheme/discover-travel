@@ -15,3 +15,5 @@
 	<?php the_content(); ?>
 </div><!-- .entry-content -->
 
+<?php get_template_part('partials/tour-inquiry'); ?>
+

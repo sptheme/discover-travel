@@ -49,7 +49,7 @@
                     	</div>
                     </div>
                     <div class="inquiry col-md-4">
-	                    <a class="button color-green" href="#"><?php echo esc_html__( 'Inquiry Now', 'discovertravel' ); ?></a>
+	                    <a class="button color-green tour-inquiry" href="#tour-inquiry-form"><?php echo esc_html__( 'Inquiry Now', 'discovertravel' ); ?></a>
                         <?php if ( !empty( $brochure ) ) : ?>
                         <a class="button color-gray" href="<?php echo $brochure; ?>"><?php echo esc_html__( 'Download Brochure', 'discovertravel' ); ?></a>
                         <?php endif; ?>

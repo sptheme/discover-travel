@@ -124,8 +124,11 @@ function dt_scripts() {
 
 	wp_enqueue_script( 'modernizr', WPSP_JS_DIR_URI . 'vendor/modernizr-2.8.3-respond-1.4.2.min.js', array('jquery'), '20120206', false );
 	wp_enqueue_script( 'jquery-easing', WPSP_JS_DIR_URI . 'vendor/jquery.easing.1.3.js', array(), '20120206', true );
+	wp_enqueue_script( 'jquery-validate', WPSP_JS_DIR_URI . 'vendor/jquery.validate.min.js', array(), '20120206', true );
+	wp_enqueue_script( 'dt-jquery-form', WPSP_JS_DIR_URI . 'vendor/jquery.form.js', array(), '20120206', true );
 	wp_enqueue_script( 'jquery-animate-enhanced', WPSP_JS_DIR_URI . 'vendor/jquery.animate-enhanced.min.js', array(), '20120206', true );
 	wp_enqueue_script( 'dt-main', WPSP_JS_DIR_URI . 'main.js', array(), '20120206', true );
+	
 	wp_enqueue_script( 'dt-mobile-menu', WPSP_JS_DIR_URI . 'mobile-menu.js', array(), '20120206', true );
 	wp_enqueue_script( 'jquery-superslides', WPSP_JS_DIR_URI . 'vendor/jquery.superslides.min.js', array(), '20120206', true );
 	wp_enqueue_script( 'magnific-popup', WPSP_JS_DIR_URI . 'vendor/jquery.magnific-popup.min.js', array(), '20120206', true );
@@ -133,6 +136,17 @@ function dt_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	if ( is_singular( 'cp_tour' ) || is_front_page() || is_home() || is_page_template( 'templates/page-home.php' ) ) {
+		wp_enqueue_style( 'jquery-ui-datepicker-style' , '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css');
+		wp_enqueue_script('jquery-ui-datepicker');
+		wp_enqueue_script( 'dt-tour-inquiry', WPSP_JS_DIR_URI . 'tour-inquiry.js', array(), '20120206', true );
+		$config_array = array(
+	        'ajaxURL' => admin_url( 'admin-ajax.php' )
+	    );
+		wp_localize_script( 'dt-tour-inquiry', 'dt_tour_inquiry_obj', $config_array );
+	}
+
 }
 add_action( 'wp_enqueue_scripts', 'dt_scripts' );
 

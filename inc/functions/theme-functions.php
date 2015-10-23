@@ -277,3 +277,179 @@ function wpsp_tour_slideshow() {
 	}
 }
 endif;
+
+if ( !function_exists( 'wpsp_send_tour_inquiry' ) ) :
+/**
+ * Send all information of tour inquiry form to tour oporators via ajax
+ * @since Discover Travel 1.0.0
+ */
+function wpsp_send_tour_inquiry() {
+	
+	parse_str ($_POST['tours'], $inquiry_info);
+	
+	wpsp_email_notify( $inquiry_info, true ); //confirm to operator
+	wpsp_email_notify( $inquiry_info ); //confirm to traveller
+	
+	die();
+}
+add_action('wp_ajax_nopriv_wpsp_send_tour_inquiry', 'wpsp_send_tour_inquiry'); //executes for users that are not logged in.
+add_action('wp_ajax_wpsp_send_tour_inquiry', 'wpsp_send_tour_inquiry');
+endif;
+
+if ( !function_exists( 'wpsp_email_notify' ) ) :
+/**
+ * Email notification to Traveller/guest and Operator 
+ * @since Discover Travel 1.0.0
+ */
+function wpsp_email_notify( $inquiry_info, $is_operator = false ) {
+	
+	if ( $is_operator ) {
+		$subject = esc_html__( 'Tour request:', 'discovertravel' ) . ' ' . $inquiry_info['firstname'] . ' ' . $inquiry_info['lastname'];
+	} else {
+		$subject = get_bloginfo('name') . ' ' . esc_html__( 'Notification', 'discovertravel' );
+	}
+	
+	$guest_email = strip_tags( $inquiry_info['email'] );
+	$operator_email = ot_get_option('operator-email');
+	$noreply_email = ot_get_option('noreply-email');
+	$emailTo = ( $is_operator ) ? $operator_email : $guest_email;
+	
+	if ( $is_operator ) {
+		$headers = "From: " . $guest_email . "\r\n";
+		$headers .= "Reply-To: " . $guest_email . "\r\n";
+	} else {
+		$headers = "From: " . $noreply_email . "\r\n";
+	}
+	$headers .= "MIME-Version: 1.0\r\n";
+	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+	
+	$body = '<html><body style="background-color:#4caf50; padding-bottom:30px;">';
+	$body .= '<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#333333"><tbody>';
+  	$body .= '<tr>';
+    $body .= '<td align="center" valign="top">';
+    $body .= '<table width="640" border="0" cellpadding="0" cellspacing="0" align="center"><tbody>';
+    $body .= '<tr>';
+    $body .= '<td width="170" valign="middle" style="padding-bottom:10px; padding-top:10px;">';
+    $body .= '<img src="'. ot_get_option('custom-logo') . '">';
+    $body .= '</td>';
+    $body .= '<td width="470" valign="middle" style="padding-bottom:10px; padding-top:10px; text-align:right;">';
+    $body .= '<font style="font-size:18px;line-height:18px" face="Arial, sans-serif" color="#ffffff">' . esc_html__( 'Hotline Support: ', 'discovertravel' ) . '<font color="#ffffff" style="text-decoration:none;color:#ffffff">' . ot_get_option('operator-hotline') . '</font></font>';
+    $body .= '<br><font style="font-size:14px;line-height:14px" face="Arial, sans-serif" color="#cccccc"><a href="mailto:' . $operator_email . '" style="text-decoration:none"><font color="#cccccc">' . $operator_email . '</font></a></font>';
+    $body .= '</td>';
+    $body .= '</tr>';
+    $body .= '</tbody></table>';
+    $body .= '</td>';
+    $body .= '</tr>';
+    $body .= '</tbody></table>';
+	$body .= '<div style="max-width:640px; margin: 30px auto 20px; background-color:#fff; padding:30px;">';
+	$body .= '<table cellpadding="5" width="100%"><tbody>';
+	$body .= '<tr>';
+	$body .= '<td colspan="2">';
+	if ( $is_operator ) {
+		$body .= '<p>' . esc_html__( 'Dear Operators', 'discovertravel' ) . ',</p>';
+		$body .= '<p>' . esc_html__( 'Please review tour inquiry from', 'discovertravel' ) . ' <strong>' . $inquiry_info['title'] . ' ' . $inquiry_info['firstname'] . '</strong> listed bellow:</p>';	
+	} else {	
+		$body .= '<p>' . esc_html__( 'Dear', 'discovertravel' ) . ' ' . $inquiry_info['title'] . ' ' . $inquiry_info['firstname'] . ',</p>';	
+		$body .= '<p>' . esc_html__( 'Thank you very much for your kind interest in booking Tours in Cambodia with', 'discovertravel' ) . ' ' . get_bloginfo('name') . '. ' . esc_html__( 'One of our travel consultants will proceed your request and get back to you with BEST OFFERS quickly.', 'discovertravel' ) . '</p>';
+		$body .= '<p>' . esc_html__( 'Please kindly check all the information of your inquiry again as below:', 'discovertravel' ) . '</p>';
+	}
+	$body .= '</td>';
+	$body .= '</tr>';
+	$body .= '<tr>';
+	$body .= '<td colspan="2"><div style="border-bottom:1px solid #ccc; padding-bottom:5px;"><strong>' . esc_html__( 'Tour inquiry summary:', 'discovertravel' ) . '</strong></div></td>';
+	$body .= '</tr>';
+	$body .= '<tr>';
+	$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Tour name: ', 'discovertravel' ) . '</strong></td>';
+	$body .= '<td width="70%">' . $inquiry_info['tourname'] . ' ' . $inquiry_info['tourday'] . ' ' . esc_html__( 'Days', 'discovertravel' ) . '/' . ($inquiry_info['tourday'] - 1) . ' ' . esc_html__( 'Nights', 'discovertravel' ) . '</td>';
+	$body .= '</tr>';
+	$body .= '<tr>';
+	$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Will travel as: ', 'discovertravel' ) . '</strong></td>';
+	$body .= '<td width="70%" style="text-transform: capitalize;">' . $inquiry_info['tourtype'] . '</td>';
+	$body .= '</tr>';
+	$body .= '<tr>';
+	$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Total guests: ', 'discovertravel' ) . '</strong></td>';
+	$body .= '<td width="70%">';
+	if ( $inquiry_info['tourtype'] == 'solo' ) {
+		$body .= esc_html__( 'Adults:', 'discovertravel' ) . ' 1';
+	}
+	if ( $inquiry_info['tourtype'] == 'couple' ) {
+		$body .= esc_html__( 'Adults:', 'discovertravel' ) . ' 2';
+	}
+	if ( $inquiry_info['tourtype'] == 'family' || $inquiry_info['tourtype'] == 'group' ) {
+		$body .= esc_html__( 'Adults:', 'discovertravel' ) . ' ' . $inquiry_info['adult'] . ', ';
+		$body .= esc_html__( 'Children:', 'discovertravel' ) . ' ' . $inquiry_info['children'] . ', '; 
+		$body .= esc_html__( 'Babies:', 'discovertravel' ) . ' ' . $inquiry_info['kids'];
+	} // end tour type as family or group
+	$body .= '</td>';
+	$body .= '</tr>';
+	$body .= '<tr>';
+	$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Hotel class: ', 'discovertravel' ) . '</strong></td>';
+	$body .= '<td width="70%">' . $inquiry_info['tourclass'] . '</td>';
+	$body .= '</tr>';
+	$body .= '<tr>';
+	if ( $inquiry_info['flexibledate'] ) {
+		$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Flexible date: ', 'discovertravel' ) . '</strong></td>';
+		$body .= '<td width="70%">' . $inquiry_info['manualdate'] . '</td>';
+	} else {
+		$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Arrive date: ', 'discovertravel' ) . '</strong></td>';
+		$body .= '<td width="70%">' . date("d F Y", strtotime( $inquiry_info['departuredate'] )) . '</td>';
+	}// end flexible date is checked
+	$body .= '</tr>';
+	if ( !empty( $inquiry_info['otherrequest'] ) )  {
+	$body .= '<tr>';
+	$body .= '<td valign="top" style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Special requests: ', 'discovertravel' ) . '</strong></td>';
+	$body .= '<td width="70%">' . $inquiry_info['otherrequest'] . '</td>';
+	$body .= '</tr>';
+	} // end other request
+	$body .= '<tr>';
+	$body .= '<td colspan="2"><div style="padding-top: 10px; border-bottom:1px solid #ccc; padding-bottom:5px;"><strong>' . esc_html__( 'Contact info:', 'discovertravel' ) . '</strong></div></td>';
+	$body .= '</tr>';
+	$body .= '<tr>';
+	$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Full Name: ', 'discovertravel' ) . '</strong></td>';
+	$body .= '<td width="70%"><strong>' . $inquiry_info['title'] . ' ' . $inquiry_info['firstname'] . ' ' . $inquiry_info['lastname'] . '</strong></td>';
+	$body .= '</tr>';
+	$body .= '<tr>';
+	$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Email: ', 'discovertravel' ) . '</strong></td>';
+	$body .= '<td width="70%">' . $inquiry_info['email'] . '</td>';
+	$body .= '</tr>';
+	$body .= '<tr>';
+	$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Phone: ', 'discovertravel' ) . '</strong></td>';
+	$body .= '<td width="70%">' . $inquiry_info['phone'] . '</td>';
+	$body .= '</tr>';
+	$body .= '<tr>';
+	$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Nationality: ', 'discovertravel' ) . '</strong></td>';
+	$body .= '<td width="70%">' . $inquiry_info['country'] . '</td>';
+	$body .= '</tr>';
+	$body .= '</tbody></table>';
+
+	if ( !$is_operator )
+		$body .= '<br><p><strong>' . esc_html__( 'Tips: ', 'discovertravel' ) . '</strong>' . esc_html__( 'If you submit incorrect information, please contact our travel consultants to change your information by ', 'discovertravel' ) . '<a href="mailto:' . ot_get_option('operator-email') . '">' . ot_get_option('operator-email') . '</a></p>';
+	
+	$body .= '<p style="padding-top: 10px;">' . esc_html__( 'Thanks & Best regards,', 'discovertravel') . '</p>';	
+
+	if ( !$is_operator ) {
+		$body .= '<p style="border-top:1px solid #ccc; padding-top:30px; font-size:12px; color:#666666;"><strong style="font-size:13px; color:#4caf50;">' . get_bloginfo('name') . '</strong>';
+		$body .= '<br>' . ot_get_option('operator-address');
+		$body .= '<br><strong>' . esc_html__( 'T. ', 'discovertravel' ) . '</strong>' . ot_get_option('operator-phone');
+		$body .= '<br><strong>' . esc_html__( 'E. ', 'discovertravel' ) . '</strong><a href="mailto:' . ot_get_option('operator-email') . '">' . ot_get_option('operator-email') . '</a>';
+		$body .= '<br><strong>' . esc_html__( 'F. ', 'discovertravel' ) . '</strong>' . ot_get_option('operator-fax');
+		$body .= '<br><strong>' . esc_html__( 'W: ', 'discovertravel' ) . '</strong>' . get_bloginfo('wpurl', 'display') . '</p>';
+	}
+	$body .= '</div>'; //wrapper
+	$body .= '</body></html>';
+	
+	if ( mail( $emailTo, $subject, $body, $headers ) ){
+		if ( !$is_operator ) {
+			$out = '<h3>' . esc_html__( 'Thank you for sending us your inquiry!', 'discovertravel' ) . '</h3>';
+			$out .= '<p>' . esc_html__( 'We will contact you within 01 working day. If you have any questions, please kindly contact us at: ', 'discovertravel' );
+			$out .= '<br>Email: <a href="mailto:' . $operator_email . '">' . $operator_email . '</a>';
+			$out .= '<br><span class="hotline">Hotline: ' . ot_get_option('operator-hotline') . '</span></p>';
+			$out .= '<p class="note">Note: To ensure that you can receive a reply from us, Please kindly add the "' . str_replace( 'http://', '', get_home_url() ) . '" domain to your e-mail "safe list".<br>If you do not receive a response in your "inbox" within 12 hours, check your "bulk mail" or "junk mail" folders.</p>';
+			echo $out;
+		}
+	} else {
+		if ( !$is_operator )
+			echo '<h5>' . esc_html__( 'Sorry, your inquiry cannot be send right now.', 'discovertravel' ) . '</h5><p>' . error_message . '</p>';
+	}
+}
+endif;

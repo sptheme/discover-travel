@@ -56,6 +56,10 @@ function custom_theme_options() {
 			'title'		=> 'Footer'
 		),
 		array(
+			'id'		=> 'tour-operator',
+			'title'		=> 'Tour operator'
+		),
+		array(
 			'id'		=> 'login-page',
 			'title'		=> 'Login Page'
 		),
@@ -89,6 +93,67 @@ function custom_theme_options() {
 			'std'		=> get_template_directory_uri() . '/favicon.ico',
 			'type'		=> 'upload',
 			'section'	=> 'header'
+		),
+
+		// Footer: Copyright
+		array(
+			'id'		=> 'copyright',
+			'label'		=> 'Footer Copyright',
+			'desc'		=> 'Replace the footer copyright text',
+			'std'		=> 'WPSP Theme Development © 2015. All Rights Reserved.',
+			'type'		=> 'text',
+			'section'	=> 'footer'
+		),
+
+		// Tour Operator: Email
+		array(
+			'id'		=> 'operator-address',
+			'label'		=> 'Operator Address',
+			'desc'		=> '',
+			'std'		=> '',
+			'type'		=> 'textarea-simple',
+			'rews'		=> '5',
+			'section'	=> 'tour-operator'
+		),
+		array(
+			'id'		=> 'operator-email',
+			'label'		=> 'Operator Email',
+			'desc'		=> 'Email address who will receive tour inquiry and custom tour design from Traveller',
+			'std'		=> 'info@mydomain.com',
+			'type'		=> 'text',
+			'section'	=> 'tour-operator'
+		),
+		array(
+			'id'		=> 'operator-phone',
+			'label'		=> 'Operator Phone',
+			'desc'		=> 'e.g: +855 23 426-456, 012 608-108',
+			'std'		=> '',
+			'type'		=> 'text',
+			'section'	=> 'tour-operator'
+		),
+		array(
+			'id'		=> 'operator-fax',
+			'label'		=> 'Operator Fax',
+			'desc'		=> 'e.g: +855 23 432-242',
+			'std'		=> '',
+			'type'		=> 'text',
+			'section'	=> 'tour-operator'
+		),
+		array(
+			'id'		=> 'operator-hotline',
+			'label'		=> 'Operator Hotline',
+			'desc'		=> 'e.g: +855 12 608 108',
+			'std'		=> '',
+			'type'		=> 'text',
+			'section'	=> 'tour-operator'
+		),
+		array(
+			'id'		=> 'noreply-email',
+			'label'		=> 'No-reply Email',
+			'desc'		=> '',
+			'std'		=> 'no-reply@mydomain.com',
+			'type'		=> 'text',
+			'section'	=> 'tour-operator'
 		),
 		
 		// Post : Post settings
@@ -148,15 +213,6 @@ function custom_theme_options() {
 					'label' => 'Related by tags'
 				)
 			)
-		),
-		// Footer: Copyright
-		array(
-			'id'		=> 'copyright',
-			'label'		=> 'Footer Copyright',
-			'desc'		=> 'Replace the footer copyright text',
-			'std'		=> 'WPSP Theme Development © 2015. All Rights Reserved.',
-			'type'		=> 'text',
-			'section'	=> 'footer'
 		),
 
 		// Login Page 
