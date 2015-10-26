@@ -63,7 +63,7 @@
             </div> <!-- .header-sidebar-1 -->
 
             <nav id="site-navigation" class="main-navigation" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
-                <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+                <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'sf-menu' ) ); ?>
             </nav><!-- #site-navigation -->
             
             <a id="mobile-menu-trigger" href="#0"><span class="mobile-menu-text">Menu</span><span class="mobile-menu-icon"></span></a>

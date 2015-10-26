@@ -58,7 +58,7 @@ jQuery(document).ready(function($){
 
     // Submit tour inquiry
     $('.send-tour-inquiry').validate({
-        /*rules: {
+        rules: {
             departuredate: {
                 required: true
             },
@@ -79,7 +79,7 @@ jQuery(document).ready(function($){
             country: {
                 required: true
             }
-        },*/
+        },
         submitHandler: function (form) {
             var data = {
                 action:"wpsp_send_tour_inquiry",

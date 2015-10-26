@@ -36,7 +36,7 @@ jQuery(document).ready(function($){
 	});
 
 	//open (or close) submenu items in the mobile menu. Close all the other open submenu items.
-	$('.menu-item-has-children').children('a').on('click', function(event){
+	$('.mobile-menu > li.menu-item-has-children a').on('click', function(event){
 		event.preventDefault();
 		$(this).toggleClass('submenu-open').next('.sub-menu').slideToggle(200).end().parent('.menu-item-has-children').siblings('.menu-item-has-children').children('a').removeClass('submenu-open').next('.sub-menu').slideUp(200);
 	});
