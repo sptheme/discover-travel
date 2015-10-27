@@ -99,11 +99,12 @@ get_header(); ?>
                     <p class="description"><?php echo $meta['wpsp_style_desc'][0]; ?></p>
                 </header>
                 <div class="col-md-9">
-        		<?php $args = array(
-		            	'hide_empty' => 0,
+        		<?php $is_empty_tour = ( $meta['wpsp_tour_hide_empty'][0] == 'off' )  ? 1 : 0;
+                    $args = array(
+		            	'hide_empty' => $is_empty_tour,
 		            );
         			$terms = get_terms( 'tour_style', $args ); ?>
-                    <ul class="tour-style-icon-60">
+                    <ul class="tour-style-icon-60 row">
                     <?php foreach ( $terms as $term ) : 
                     		echo '<li class="col-xs-4 col-md-2"><a href="' . get_term_link( $term ) . '" title="' . $term->name . '"><i class="sprite ' . get_option( 'tour_style_'.$term->term_id.'_icon', '' ) . '"></i>' . $term->name . '</a></li>';
                     	endforeach; ?>	

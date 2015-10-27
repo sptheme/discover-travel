@@ -188,7 +188,7 @@ function custom_meta_boxes() {
 				'desc'		=> 'Copy and past URL/link for button',
 			),
 			array(
-				'label'       => 'Tour style icon',
+				'label'       => 'Tour style',
 				'id'          => 'tab_tour_style_icon',
 				'type'        => 'tab'
 			),
@@ -206,6 +206,13 @@ function custom_meta_boxes() {
 				'std'		=> 'Join with us to explore and experience the most notable destinations and valuable treasure of Cambodia',
 				'desc'		=> '',
 				'rows'      => '3',
+			),
+			array(
+				'label'		=> 'Show/Hide empty tour style name',
+				'id'		=> $prefix . 'tour_hide_empty',
+				'type'		=> 'on-off',
+				'std'		=> 'on',
+				'desc'		=> 'Default: on - show tour sytle name if it does not have any tours'
 			),
 		)
 	);
