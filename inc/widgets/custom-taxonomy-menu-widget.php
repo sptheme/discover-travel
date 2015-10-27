@@ -49,6 +49,7 @@ class WPSP_Custom_Taxonomy_Menu_Widget extends WP_Widget {
         $tax_name           = $instance['tax_name'];
         $show_post_count    = $instance['show_post_count'];
         $is_icon            = $instance['is_icon'];
+        $hide_empty         = $instance['hide_empty'];
 
         $title = apply_filters('widget_title', $instance['title'] );
 
@@ -59,7 +60,7 @@ class WPSP_Custom_Taxonomy_Menu_Widget extends WP_Widget {
 
         // We're good to go, let's build the menu
         $args = array(
-            'hide_empty' => 0,
+            'hide_empty' => $hide_empty,
             );
              
         $terms = get_terms( $tax_name, $args );
@@ -115,6 +116,7 @@ class WPSP_Custom_Taxonomy_Menu_Widget extends WP_Widget {
         $instance['tax_name'] = strip_tags( $new_instance['tax_name'] );
         $instance['show_post_count'] = (int) $new_instance['show_post_count'];
         $instance['is_icon'] = (int) $new_instance['is_icon'];
+        $instance['hide_empty'] = (int) $new_instance['hide_empty'];
 
         return $instance;
     }	
@@ -133,7 +135,8 @@ class WPSP_Custom_Taxonomy_Menu_Widget extends WP_Widget {
             'title' => __('Custom taxonomy menu', 'wpsp_admin'), 
             'tax_name' => '', 
             'show_post_count' => '',
-            'is_icon' => '' );
+            'is_icon' => '',
+            'hide_empty' => '' );
         $instance = wp_parse_args( (array) $instance, $defaults ); ?>
         <p>
             <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'wpsp_admin'); ?></label>
@@ -168,6 +171,10 @@ class WPSP_Custom_Taxonomy_Menu_Widget extends WP_Widget {
         <p>
             <input id="<?php echo $this->get_field_id('is_icon'); ?>" name="<?php echo $this->get_field_name('is_icon'); ?>" type="checkbox" value="1" <?php if ($instance['is_icon']) echo 'checked="checked"'; ?>/>
             <label for="<?php echo $this->get_field_id('is_icon'); ?>"><?php _e('Show icon?', 'wpsp_admin'); ?></label>
+        </p>
+        <p>
+            <input id="<?php echo $this->get_field_id('hide_empty'); ?>" name="<?php echo $this->get_field_name('hide_empty'); ?>" type="checkbox" value="1" <?php if ($instance['hide_empty']) echo 'checked="checked"'; ?>/>
+            <label for="<?php echo $this->get_field_id('hide_empty'); ?>"><?php _e('Hide empty?', 'wpsp_admin'); ?></label>
         </p>
 <?php    
     }    
