@@ -365,51 +365,136 @@ p.copyright {
     height: 24px;
 }
 .tour-style-icon .best-offer {
-    background-position: -170px -173px;
+    background-position: 0 -173px;
 }
 .tour-style-icon .newest {
-    background-position: -204px -173px;
+    background-position: -34px -173px;
 }
 .tour-style-icon .biking {
-    background-position: -238px -173px;
+    background-position: -68px -173px;
 }
 .tour-style-icon .advanture {
-    background-position: -272px -173px;
+    background-position: -102px -173px;
 }
 .tour-style-icon .festival {
-    background-position: -306px -173px;
+    background-position: -136px -173px;
+}
+.tour-style-icon .city-break {
+    background-position: -170px -173px;
+}
+.tour-style-icon .home-stay {
+    background-position: -204px -173px;
 }
 
 .tour-style-icon .island {
-    background-position: -170px -207px;
+    background-position: 0 -207px;
 }
 .tour-style-icon .honeymoon {
-    background-position: -204px -207px;
+    background-position: -34px -207px;
 }
 .tour-style-icon .cruise {
-    background-position: -238px -207px;
+    background-position: -68px -207px;
 }
 .tour-style-icon .holiday {
-    background-position: -272px -207px;
+    background-position: -102px -207px;
 }
 .tour-style-icon .luxary {
-    background-position: -306px -207px;
+    background-position: -136px -207px;
+}
+.tour-style-icon .nature-wildlife  {
+    background-position: -170px -207px;
+}
+.tour-style-icon .wellness  {
+    background-position: -204px -207px;
 }
 
-.tour-style-icon .family-trip {
-    background-position: -170px -241px;
+.tour-style-icon .trips {
+    background-position: 0 -241px;
 }
 .tour-style-icon .beach {
-    background-position: -204px -241px;
+    background-position: -34px -241px;
 }
 .tour-style-icon .trekking {
-    background-position: -238px -241px;
+    background-position: -68px -241px;
 }
-.tour-style-icon .elephant {
-    background-position: -272px -241px;
+.tour-style-icon .culinary {
+    background-position: -102px -241px;
 }
 .tour-style-icon .multi-tour {
-    background-position: -306px -241px;
+    background-position: -136px -241px;
+}
+.tour-style-icon .family {
+    background-position: -170px -241px;
+}
+.tour-style-icon .golf {
+    background-position: -204px -241px;
+}
+
+/* Hover */
+.tour-style-icon a:hover .best-offer {
+    background-position: -268px -173px;
+}
+.tour-style-icon a:hover .newest {
+    background-position: -302px -173px;
+}
+.tour-style-icon a:hover .biking {
+    background-position: -336px -173px;
+}
+.tour-style-icon a:hover .advanture {
+    background-position: -370px -173px;
+}
+.tour-style-icon a:hover .festival {
+    background-position: -404px -173px;   
+}
+.tour-style-icon a:hover .city-break {
+    background-position: -438px -173px;   
+}
+.tour-style-icon a:hover .home-stay {
+    background-position: -472px -173px;   
+}
+
+.tour-style-icon a:hover .island {
+    background-position: -268 -207px;
+}
+.tour-style-icon a:hover .honeymoon {
+    background-position: -302px -207px;
+}
+.tour-style-icon a:hover .cruise {
+    background-position: -336px -207px;
+}
+.tour-style-icon a:hover .holiday {
+    background-position: -370px -207px;
+}
+.tour-style-icon a:hover .luxary {
+    background-position: -404px -207px;
+}
+.tour-style-icon a:hover .nature-wildlife  {
+    background-position: -438px -207px;
+}
+.tour-style-icon a:hover .wellness  {
+    background-position: -472px -207px;
+}
+
+.tour-style-icon a:hover .trips {
+    background-position: -268px -241px;
+}
+.tour-style-icon a:hover .beach {
+    background-position: -302px -241px;
+}
+.tour-style-icon a:hover .trekking {
+    background-position: -336px -241px;
+}
+.tour-style-icon a:hover .culinary {
+    background-position: -370px -241px;
+}
+.tour-style-icon a:hover .multi-tour {
+    background-position: -404px -241px;
+}
+.tour-style-icon a:hover .family {
+    background-position: -438px -241px;
+}
+.tour-style-icon a:hover .golf {
+    background-position: -472px -241px;
 }
 
 /* Tour style icon 60px by 60px */
@@ -444,6 +529,12 @@ p.copyright {
 .tour-style-icon-60 .festival {
     background-position: -280px -275px;
 }
+.tour-style-icon-60 .city-break {
+    background-position: -350px -275px;
+}
+.tour-style-icon-60 .home-stay {
+    background-position: -420px -275px;
+}
     /* Hover */
     .tour-style-icon-60 a:hover .best-offer {
         background-position: 0 -485px;
@@ -460,6 +551,12 @@ p.copyright {
     .tour-style-icon-60 a:hover .festival {
         background-position: -280px -485px;
     }
+    .tour-style-icon-60 a:hover .city-break {
+        background-position: -350px -485px;
+    }
+    .tour-style-icon-60 a:hover .home-stay {
+        background-position: -420px -485px;
+    }
 
 .tour-style-icon-60 .island {
     background-position: 0 -345px;
@@ -475,6 +572,12 @@ p.copyright {
 }
 .tour-style-icon-60 .luxary {
     background-position: -280px -345px;
+}
+.tour-style-icon-60 .nature-wildlife {
+    background-position: -350px -345px;
+}
+.tour-style-icon-60 .wellness {
+    background-position: -420px -345px;
 }
 
     /* Hover */
@@ -493,8 +596,14 @@ p.copyright {
     .tour-style-icon-60 a:hover .luxary {
         background-position: -280px -555px;
     }
+    .tour-style-icon-60 a:hover .nature-wildlife {
+        background-position: -350px -555px;
+    }
+    .tour-style-icon-60 a:hover .wellness {
+        background-position: -420px -555px;
+    }
 
-.tour-style-icon-60 .family-trip {
+.tour-style-icon-60 .trips {
     background-position: 0 -415px;
 }
 .tour-style-icon-60 .beach {
@@ -503,14 +612,20 @@ p.copyright {
 .tour-style-icon-60 .trekking {
     background-position: -140px -415px;
 }
-.tour-style-icon-60 .elephant {
+.tour-style-icon-60 .culinary {
     background-position: -210px -415px;
 }
 .tour-style-icon-60 .multi-tour {
     background-position: -280px -415px;
 }
+.tour-style-icon-60 .family {
+    background-position: -350px -415px;
+}
+.tour-style-icon-60 .golf {
+    background-position: -420px -415px;
+}
     /* Hover */
-    .tour-style-icon-60 a:hover .family-trip {
+    .tour-style-icon-60 a:hover .trips {
         background-position: 0 -625px;
     }
     .tour-style-icon-60 a:hover .beach {
@@ -519,11 +634,17 @@ p.copyright {
     .tour-style-icon-60 a:hover .trekking {
         background-position: -140px -625px;
     }
-    .tour-style-icon-60 a:hover .elephant {
+    .tour-style-icon-60 a:hover .culinary {
         background-position: -210px -625px;
     }
     .tour-style-icon-60 a:hover .multi-tour {
         background-position: -280px -625px;
+    }
+    .tour-style-icon-60 a:hover .family {
+        background-position: -350px -625px;
+    }
+    .tour-style-icon-60 a:hover .golf {
+        background-position: -420px -625px;
     }
 
 /* Payment Getway */
