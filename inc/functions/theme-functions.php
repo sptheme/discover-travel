@@ -45,13 +45,13 @@ if ( ! function_exists( 'wpsp_tour_valid_date' ) ) :
  */
 function wpsp_tour_valid_date( $valid_from, $valid_end ) {
         
-        printf( '%1$s %2$s <strong>%3$s</strong> %4$s <strong>%5$s</strong>',
-                sprintf( '<span class="label">%s</span>', esc_html__( 'Valid date:', 'discovertravel' ) ),
-                sprintf( '%s', esc_html__( 'From', 'discovertravel' ) ),
-                date("d F Y", strtotime($valid_from)),
-                sprintf( '%s ', esc_html__( 'to', 'discovertravel' ) ),
-                date("d F Y", strtotime($valid_end))
-        );
+    printf( '%1$s %2$s <strong>%3$s</strong> %4$s <strong>%5$s</strong>',
+            sprintf( '<span class="label">%s</span>', esc_html__( 'Valid date:', 'discovertravel' ) ),
+            sprintf( '%s', esc_html__( 'From', 'discovertravel' ) ),
+            date("d F Y", strtotime($valid_from)),
+            sprintf( '%s ', esc_html__( 'to', 'discovertravel' ) ),
+            date("d F Y", strtotime($valid_end))
+    );
 }
 endif;
 

@@ -44,9 +44,13 @@
                         	<?php wpsp_list_tour_destination(); ?>
                         </div>
                         <?php wpsp_list_tour_style(); ?>
+                        
+                        <?php if ( !empty($valid_from) || !empty($valid_end) ) : ?>
                     	<div class="tour-expire">
                     		<?php wpsp_tour_valid_date( $valid_from, $valid_end ); ?>
                     	</div>
+                        <?php endif; ?>
+                        
                     </div>
                     <div class="inquiry col-md-4">
 	                    <a class="button color-green tour-inquiry" href="#tour-inquiry-form"><?php echo esc_html__( 'Inquiry Now', 'discovertravel' ); ?></a>
