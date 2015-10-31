@@ -520,7 +520,38 @@ function custom_theme_options() {
 		array(
 			'id'		=> 'layout-destination',
 			'label'		=> 'Template page destination',
-			'desc'		=> '[ <strong>is_single</strong> ] Template page destination layout - If a page has a set layout, it will override this.',
+			'desc'		=> '[ <strong>is_page_template</strong> ] Template page destination layout - If a page has a set layout, it will override this.',
+			'std'		=> 'inherit',
+			'type'		=> 'radio-image',
+			'section'	=> 'layout',
+			'choices'	=> array(
+				array(
+					'value'		=> 'inherit',
+					'label'		=> 'Inherit Global Layout',
+					'src'		=> get_template_directory_uri() . '/assets/images/admin/layout-off.png'
+				),
+				array(
+					'value'		=> 'col-1c',
+					'label'		=> '1 Column',
+					'src'		=> get_template_directory_uri() . '/assets/images/admin/col-1c.png'
+				),
+				array(
+					'value'		=> 'col-2cl',
+					'label'		=> '2 Column Left',
+					'src'		=> get_template_directory_uri() . '/assets/images/admin/col-2cl.png'
+				),
+				array(
+					'value'		=> 'col-2cr',
+					'label'		=> '2 Column Right',
+					'src'		=> get_template_directory_uri() . '/assets/images/admin/col-2cr.png'
+				)
+			)
+		),
+		// Layout : Custom Page Attractions
+		array(
+			'id'		=> 'layout-attraction',
+			'label'		=> 'Template page attraction',
+			'desc'		=> '[ <strong>is_page_template</strong> ] Template page attraction layout - If a page has a set layout, it will override this.',
 			'std'		=> 'inherit',
 			'type'		=> 'radio-image',
 			'section'	=> 'layout',
@@ -626,7 +657,14 @@ function custom_theme_options() {
 		array(
 			'id'		=> 's1-page-destination',
 			'label'		=> 'Custom page destination',
-			'desc'		=> '[ <strong>is_page</strong> ] Primary - If a page has a unique sidebar, it will override this.',
+			'desc'		=> '[ <strong>is_page_tempalte</strong> ] Primary - If a page has a unique sidebar, it will override this.',
+			'type'		=> 'sidebar-select',
+			'section'	=> 'sidebars'
+		),
+		array(
+			'id'		=> 's1-page-attraction',
+			'label'		=> 'Custom page attraction',
+			'desc'		=> '[ <strong>is_page_tempalte</strong> ] Primary - If a page has a unique sidebar, it will override this.',
 			'type'		=> 'sidebar-select',
 			'section'	=> 'sidebars'
 		),

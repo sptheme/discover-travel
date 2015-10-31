@@ -26,9 +26,9 @@ get_header(); ?>
             <h5><?php echo esc_html__( 'All Destination in Cambodia', 'discovertravel' ); ?></h5>
            
            	<?php $args = array(
-           			'parent'		=> $post->ID,
-      					'child_of'		=> $post->ID,
-      					'hierarchical'	=> 0
+           				'child_of'		=> $post->ID,
+                     //'parent'     => $post->ID,
+      					//'hierarchical'	=> 0
 				);
 
            		$child_pages = get_pages( $args ) ?>

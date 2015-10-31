@@ -128,6 +128,7 @@ function wpsp_sidebar_primary() {
 	if ( is_404() && ot_get_option('s1-404') ) $sidebar = ot_get_option('s1-404');
 	if ( is_page() && ot_get_option('s1-page') ) $sidebar = ot_get_option('s1-page');
 	if ( is_page_template( 'templates/page-destination.php' ) ) $sidebar = ot_get_option('s1-page-destination');
+	if ( is_page_template( 'templates/page-attraction.php' ) ) $sidebar = ot_get_option('s1-page-attraction');
 
 	// Check for page/post specific sidebar
 	if ( is_page() || is_single() ) {
@@ -170,6 +171,7 @@ function wpsp_layout_class() {
 		elseif ( is_singular('cp_tour') && ( ot_get_option('layout-tour') !='inherit' ) ) $layout = ot_get_option('layout-tour',''.$default.'');
 		// Else check for custom template
 		elseif ( is_page_template( 'templates/page-destination.php' ) && ( ot_get_option('layout-destination') !='inherit' ) ) $layout = ot_get_option('layout-destination',''.$default.'');
+			elseif ( is_page_template( 'templates/page-attraction.php' ) && ( ot_get_option('layout-attraction') !='inherit' ) ) $layout = ot_get_option('layout-attraction',''.$default.'');
 		/*elseif ( is_singular('gallery') && ( ot_get_option('layout-gallery') !='inherit' ) ) $layout = ot_get_option('layout-gallery',''.$default.'');*/
 		// Else get global option
 		else $layout = ot_get_option('layout-global',''.$default.'');
