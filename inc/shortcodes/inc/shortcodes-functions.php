@@ -397,7 +397,9 @@ if ( ! function_exists( 'wpsp_tour_itinerary_shortcode' ) ) :
  */
 function wpsp_tour_itinerary_shortcode( $atts, $content = null ) {
 
-	return '<article class="itenerary-item">' . return_clean($content). '</article>';
+	$out = '<h2>' . esc_html__( 'Itinerary', 'discovertravel' ) . '</h2>';
+	$out .= '<article class="itenerary-item">' . return_clean($content). '</article>';
+	return $out;
 }
 endif;
 
