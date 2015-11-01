@@ -255,11 +255,11 @@ function custom_meta_boxes() {
 	);		
 
 	/* ---------------------------------------------------------------------- */
-	/*	Post Type - Tour - Settings
+	/*	Post Type - Tour
 	/* ---------------------------------------------------------------------- */
 	$post_type_tour = array(
 		'id'          => 'tour-settings',
-		'title'       => 'Tour Settings',
+		'title'       => 'Tour SUMMARY',
 		'desc'        => '',
 		'pages'       => array( 'cp_tour' ),
 		'context'     => 'normal',
@@ -335,6 +335,18 @@ function custom_meta_boxes() {
 				'type'		=> 'upload',
 				'std'		=> '',
 				'desc'		=> 'Optional: Upload brochure file for guest/customer download. .doc, .docx, .pdf'
+			),
+			array(
+				'label'       => 'Highlight',
+				'id'          => 'tab_highlight',
+				'type'        => 'tab'
+			),
+			array(
+				'label'		=> 'Tour highlight',
+				'id'		=> $prefix . 'highlight',
+				'type'		=> 'textarea-simple',
+				'desc'		=> 'You can separate each days by comma(,) <br> e.g: Day 1: Arrive in Phnom Penh, <br>Day 2: Explore Phnom Penh',
+				'rows'      => '4'
 			),
 			array(
 				'label'       => 'Map',

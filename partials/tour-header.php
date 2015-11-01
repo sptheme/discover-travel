@@ -16,12 +16,11 @@
 	$valid_from = get_post_meta( $post->ID, 'wpsp_valid_from', true );
 	$valid_end = get_post_meta( $post->ID, 'wpsp_valid_end', true );
 	$brochure = get_post_meta( $post->ID, 'wpsp_brochure', true );
-	$embed_map = get_post_meta( $post->ID, 'wpsp_embed_map', true );  ?>
+?>
 
 <div class="container">
     <div class="itenerary-head box-shadow">
-        <?php wpsp_tour_slideshow(); 
-            //get_template_part( 'partials/tour-slideshow' ); ?>
+        <?php wpsp_tour_slideshow(); ?>
 
     	<div class="itenerary-summary">
             <div class="tour-title">
@@ -62,9 +61,6 @@
             </div> <!-- .tour-meta -->                    
         </div> <!-- .itenerary-summary -->
         
-        <?php if ( $embed_map ) : ?>
-        <div class="tour-map"><?php echo $embed_map; ?></div>            
-    	<?php endif; ?>
 	</div> <!-- .itenerary-head -->
 </div>	<!-- .container -->
 

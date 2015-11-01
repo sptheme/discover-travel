@@ -214,7 +214,8 @@ function wpsp_custom_widgets() {
     // Define array of custom widgets for the theme
     $widgets = array(
         'custom-taxonomy-menu',
-        'quick-contact'
+        'quick-contact',
+        'tour-summary'
     );
 
     // Loop through widgets and load their files
