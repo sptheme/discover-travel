@@ -215,7 +215,8 @@ function wpsp_custom_widgets() {
     $widgets = array(
         'custom-taxonomy-menu',
         'quick-contact',
-        'tour-summary'
+        'tour-summary',
+        'subnav'
     );
 
     // Loop through widgets and load their files
