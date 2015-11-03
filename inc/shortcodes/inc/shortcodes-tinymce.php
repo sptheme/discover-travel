@@ -23,6 +23,7 @@ function wpsp_shortcodes_register_mce_button_3( $buttons ) {
 	array_push( $buttons, 'team' );
 	array_push( $buttons, 'photogallery' );
 	array_push( $buttons, 'post' );*/
+	array_push( $buttons, 'tour' );
 	array_push( $buttons, 'tour_itinerary' );
 	array_push( $buttons, 'tour_inclusion' );
 
@@ -81,6 +82,7 @@ function wpsp_shortcodes_add_tinymce_plugin($plugin_array) {
 	$plugin_array['horz_rule']		= ED_JS_URL . 'ed-hr.js';
 	$plugin_array['email_encoder']	= ED_JS_URL . 'ed-email-encoder.js';
 	$plugin_array['accordion']		= ED_JS_URL . 'ed-accordion.js';
+	$plugin_array['tour']			= ED_JS_URL . 'ed-tour.js';
 	$plugin_array['tour_itinerary']	= ED_JS_URL . 'ed-tour-itinerary.js';
 	$plugin_array['tour_inclusion']	= ED_JS_URL . 'ed-tour-inclusion.js';
 	/*$plugin_array['toggle']			= ED_JS_URL . 'ed-toggle.js';
@@ -111,6 +113,7 @@ function wpsp_shortcodes_add_mce_button() {
 }
 add_action( 'admin_head', 'wpsp_shortcodes_add_mce_button' );
 
+load_template( SC_INC_DIR . 'popup/ajax-tour-shortcode.php' );
 // load_template( SC_INC_DIR . 'popup/ajax-team-shortcode.php' );
 // load_template( SC_INC_DIR . 'popup/ajax-photogallery-shortcode.php' );
 // load_template( SC_INC_DIR . 'popup/ajax-post-shortcode.php' );

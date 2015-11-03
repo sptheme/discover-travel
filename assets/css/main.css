@@ -2021,15 +2021,15 @@ span.radio-image {
     .ie7 .pagination li, .ie7 .pagination span { display: inline; }
 
     .pagination .current {
-        background: #e6edef;
-        color: #707070;
+        background: #26ad5e;
+        color: #fff;
     }
 
     .comments-pagination .current { padding-bottom: 3px; }
 
         .pagination a:hover, .comments-pagination a:hover {
-            border-color: #e6edef;
-            color: #ff6633;
+            border-color: #26ad5e;
+            color: #26ad5e;
         }
 
     .pagination .next, .pagination .prev { border: none; }

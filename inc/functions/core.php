@@ -77,47 +77,50 @@ if ( ! function_exists( 'wpsp_paging_nav' ) ) :
  *
  * @todo Remove this function when WordPress 4.3 is released.
  */
-function wpsp_paging_nav() {
-	// Don't print empty markup if there's only one page.
-	if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
-		return;
+function wpsp_paging_nav( $pages = '', $range = 2 ) {
+	$showitems = ( $range * 2 ) + 1;
+
+	global $paged, $wp_query;
+
+	if( empty( $paged ) )
+		$paged = 1;
+
+	if( $pages == '' ) {
+
+		$pages = $wp_query->max_num_pages;
+
+		if( !$pages )
+			$pages = 1;
+
 	}
 
-	$paged        = get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
-	$pagenum_link = html_entity_decode( get_pagenum_link() );
-	$query_args   = array();
-	$url_parts    = explode( '?', $pagenum_link );
+	if( 1 != $pages ) {
 
-	if ( isset( $url_parts[1] ) ) {
-		wp_parse_str( $url_parts[1], $query_args );
-	}
+		$output = '<nav class="pagination">';
 
-	$pagenum_link = remove_query_arg( array_keys( $query_args ), $pagenum_link );
-	$pagenum_link = trailingslashit( $pagenum_link ) . '%_%';
+		// if( $paged > 2 && $paged >= $range + 1 /*&& $showitems < $pages*/ )
+			// $output .= '<a href="' . get_pagenum_link( 1 ) . '" class="next">&laquo; ' . __('First', 'sptheme_admin') . '</a>';
 
-	$format  = $GLOBALS['wp_rewrite']->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
-	$format .= $GLOBALS['wp_rewrite']->using_permalinks() ? user_trailingslashit( 'page/%#%', 'paged' ) : '?paged=%#%';
+		if( $paged > 1 /*&& $showitems < $pages*/ )
+			$output .= '<a href="' . get_pagenum_link( $paged - 1 ) . '" class="next">&larr; ' . __('Previous', 'discovertravel') . '</a>';
 
-	// Set up paginated links.
-	$links = paginate_links( array(
-		'base'     => $pagenum_link,
-		'format'   => $format,
-		'total'    => $GLOBALS['wp_query']->max_num_pages,
-		'current'  => $paged,
-		'mid_size' => 2,
-		'add_args' => array_map( 'urlencode', $query_args ),
-		'prev_text' => __( '← Previous', 'discovertravel' ),
-		'next_text' => __( 'Next →', 'discovertravel' ),
-        'type'      => 'list',
-	) );
+		for ( $i = 1; $i <= $pages; $i++ )  {
 
-	if ( $links ) {
-	?>
-	<nav class="navigation paging-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'discovertravel' ); ?></h1>
-			<?php echo $links; ?>
-	</nav><!-- .navigation -->
-	<?php
+			if ( 1 != $pages && ( !( $i >= $paged + $range + 1 || $i <= $paged - $range - 1) || $pages <= $showitems ) )
+				$output .= ( $paged == $i ) ? '<span class="current">' . $i . '</span>' : '<a href="' . get_pagenum_link( $i ) . '">' . $i . '</a>';
+
+		}
+
+		if ( $paged < $pages /*&& $showitems < $pages*/ )
+			$output .= '<a href="' . get_pagenum_link( $paged + 1 ) . '" class="prev">' . __('Next', 'discovertravel') . ' &rarr;</a>';
+
+		// if ( $paged < $pages - 1 && $paged + $range - 1 <= $pages /*&& $showitems < $pages*/ )
+			// $output .= '<a href="' . get_pagenum_link( $pages ) . '" class="prev">' . __('Last', 'sptheme_admin') . ' &raquo;</a>';
+
+		$output .= '</nav>';
+
+		return $output;
+
 	}
 }
 endif;

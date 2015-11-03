@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
 	// Setup wp gallery work with magnificPopup
-    $('.itenerary-content, .entry-content, .gallery').each(function() {
+    $('.itenerary-content, .gallery').each(function() {
         $(this).magnificPopup({
             delegate: 'a',
             type: 'image',

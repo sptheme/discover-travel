@@ -27,6 +27,7 @@ function wpsp_add_shortcodes() {
 	add_shortcode( 'button', 'wpsp_button_shortcode' );
 	add_shortcode( 'tour_inclusion', 'wpsp_tour_inclusion_shortcode' );
 	add_shortcode( 'inclusion_section', 'wpsp_inclusion_section_shortcode' );
+	add_shortcode( 'sc_tour', 'wpsp_tour_shortcode' );
 	add_shortcode( 'tour_itinerary', 'wpsp_tour_itinerary_shortcode' );
 	add_shortcode( 'itinerary_section', 'wpsp_itinerary_section_shortcode' );
 	//add_shortcode( 'hr', 'wpsp_hr_shortcode_shortcode' );
@@ -359,6 +360,44 @@ function wpsp_post_shortcode( $atts, $content = null ) {
 	return ob_get_clean();
 }
 endif; 
+
+if ( ! function_exists( 'wpsp_tour_shortcode' ) ) :
+/**
+ * Launcher shortcode
+ *
+ * Options: Show all launcher / by Category
+ *
+ */
+function wpsp_tour_shortcode( $atts, $content = null ){
+
+	ob_start();
+	extract( shortcode_atts( array(
+		'term_id' => null,
+		'post_num' => null,
+		'cols' => null
+	), $atts ) );
+
+	$args = array( 'posts_per_page' => $post_num );
+	if ( $term_id == '-1' ) {
+		wpsp_get_tour_by_term( $args, $cols );
+	} else {
+		$args = array (
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'tour_style',
+						'field'    => 'id',
+						'terms'    => array($term_id)
+					)
+				),
+				'posts_per_page' => $post_num
+			);
+		wpsp_get_tour_by_term( $args, $cols );
+	}
+
+	return ob_get_clean();
+}
+endif;
+
 
 if ( ! function_exists( 'wpsp_tour_inclusion_shortcode' ) ) :
 /**

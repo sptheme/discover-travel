@@ -278,6 +278,60 @@ function wpsp_tour_slideshow() {
 }
 endif;
 
+if ( !function_exists( 'wpsp_get_tour_by_term' ) ) :
+/**
+ * List all tour by term
+ * @since Discover Travel 1.0.0
+ */
+function wpsp_get_tour_by_term( $args, $cols ) {
+
+	switch ( $cols ) {	
+		case '2':
+		$cols = 'col-sm-6';
+		break;
+
+		case '3':
+		$cols = 'col-sm-4';
+		break;
+
+		case '4':
+		$cols = 'col-sm-3';
+		break;
+	}
+
+	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	
+	$defaults = array(
+		'post_type'	=> 'cp_tour',
+		'orderby' => 'rand',
+		'posts_per_page' => -1,
+		'paged' => $paged
+		);
+	$args = wp_parse_args( $args, $defaults );
+	extract( $args );
+	
+	$custom_query = new WP_Query( $args );
+
+	if ( $custom_query -> have_posts() ) :
+		
+		echo '<div class="row">';
+		while ($custom_query -> have_posts() ) : $custom_query->the_post();
+		echo '<div class="' . $cols . '">';
+			get_template_part( 'partials/tour-grid' );
+		echo '</div>';	
+		endwhile; wp_reset_postdata();
+		echo '</div>';
+		// Pagination
+        if(function_exists('wp_pagenavi'))
+            wp_pagenavi();
+        else 
+            echo wpsp_paging_nav($custom_query->max_num_pages);
+    else:
+    	echo '<h5>' . esc_html__( 'Sorry, Our tours are not available now!', 'discovertravel' ) . '</h5>';
+	endif;
+}
+endif;
+
 if ( !function_exists( 'wpsp_send_tour_inquiry' ) ) :
 /**
  * Send all information of tour inquiry form to tour oporators via ajax

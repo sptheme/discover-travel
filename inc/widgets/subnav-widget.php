@@ -50,6 +50,8 @@ class WPSP_Sub_Nav_Widget extends WP_Widget {
         $title = apply_filters('widget_title', $instance['title'] );
         $parent_page = $instance['parent_page'];
         $depth = $instance['depth'];
+        $order_by = $instance['order_by'];
+        $sort_by = $instance['sort_by'];
         
         echo $before_widget;
 
@@ -58,9 +60,11 @@ class WPSP_Sub_Nav_Widget extends WP_Widget {
 
         if ( $depth ) {
             $args = array(
-                    'child_of'      => $parent_page,
-                    'parent'     => $parent_page,
-                    'hierarchical'    => 0
+                    'sort_order' => $order_by,
+                    'sort_column' =>  $sort_by,
+                    'child_of' => $parent_page,
+                    'parent' => $parent_page,
+                    'hierarchical' => 0
                 );    
         } else {
             $args = array( 'child_of' => $parent_page );
@@ -101,6 +105,8 @@ class WPSP_Sub_Nav_Widget extends WP_Widget {
         $instance['title'] = strip_tags( $new_instance['title'] );  
         $instance['parent_page'] = (int) $new_instance['parent_page'];
         $instance['depth'] = $new_instance['depth'];
+        $instance['order_by'] = $new_instance['order_by'];
+        $instance['sort_by'] = $new_instance['sort_by'];
         return $instance;
     }	
 
@@ -118,6 +124,8 @@ class WPSP_Sub_Nav_Widget extends WP_Widget {
             'title' => __('All Destinations', 'wpsp_admin'),
             'parent_page' => 0,
             'depth' => 0,
+            'order_by' => 'asc',
+            'sort_by' => 'post_title'
             );
         $instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
@@ -139,7 +147,22 @@ class WPSP_Sub_Nav_Widget extends WP_Widget {
         <p>
             <input id="<?php echo $this->get_field_id('depth'); ?>" name="<?php echo $this->get_field_name('depth'); ?>" type="checkbox" value="1" <?php if ($instance['depth']) echo 'checked="checked"'; ?>/>
             <label for="<?php echo $this->get_field_id('depth'); ?>"><?php _e('Displays top-level Pages only?', 'wpsp_admin'); ?></label>
-        </p>    
+        </p> 
+        <p>
+            <label for="<?php echo $this->get_field_id('sort_by'); ?>"><?php _e('Sort by', 'wpsp_admin'); ?></label>
+            <select class="widefat" id="<?php echo $this->get_field_id('sort_by'); ?>" name="<?php echo $this->get_field_name('sort_by'); ?>">
+                <option value="post_title" <?php if ( $instance['sort_by'] == 'post_title' ) echo 'selected'; ?>>Post title</option>
+                <option value="post_date" <?php if ( $instance['sort_by'] == 'post_date' ) echo 'selected'; ?>>Post date</option>
+                <option value="menu_order" <?php if ( $instance['sort_by'] == 'menu_order' ) echo 'selected'; ?>>Menu order</option>
+            </select>
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('order_by'); ?>"><?php _e('Order by', 'wpsp_admin'); ?></label>
+            <select class="widefat" id="<?php echo $this->get_field_id('order_by'); ?>" name="<?php echo $this->get_field_name('order_by'); ?>">
+                <option value="asc" <?php if ( $instance['order_by'] == 'asc' ) echo 'selected'; ?>>A-Z</option>
+                <option value="desc" <?php if ( $instance['order_by'] == 'desc' ) echo 'selected'; ?>>Z-A</option>
+            </select>
+        </p>   
 <?php    
     }    
 }
