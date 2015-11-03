@@ -41,6 +41,7 @@
 	    <ul class="slides-container">
 	<?php while ($custom_query -> have_posts() ) : $custom_query->the_post(); 
 		$btn_text = get_post_meta( $post->ID, 'wpsp_slider_btn', true ); 
+		$slider_link = get_post_meta( $post->ID, 'wpsp_slider_link', true ); 
 		$slider_img_url = get_post_meta( $post->ID, 'wpsp_slider_image', true ); ?>    
 	        <li<?php echo ( empty($slider_link) ) ? ' class="title-only"' : '' ; ?>>
 	            <img src="<?php echo $slider_img_url; ?>">
