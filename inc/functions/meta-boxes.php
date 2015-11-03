@@ -69,8 +69,8 @@ function custom_meta_boxes() {
 	/*	Home template
 	/* ---------------------------------------------------------------------- */
 	$home_template_settings = array(
-		'id'          => 'attraction-settings',
-		'title'       => 'Attraction Settings',
+		'id'          => 'homepage-settings',
+		'title'       => 'Homepage Settings',
 		'desc'        => '',
 		'pages'       => array( 'page' ),
 		'context'     => 'normal',
@@ -213,6 +213,35 @@ function custom_meta_boxes() {
 				'type'		=> 'on-off',
 				'std'		=> 'on',
 				'desc'		=> 'Default: on - show tour sytle name if it does not have any tours'
+			),
+		)
+	);
+
+	/* ---------------------------------------------------------------------- */
+	/*	Destination template
+	/* ---------------------------------------------------------------------- */
+	$destination_template_settings = array(
+		'id'          => 'destination-settings',
+		'title'       => 'Destination Settings',
+		'desc'        => '',
+		'pages'       => array( 'page' ),
+		'context'     => 'normal',
+		'priority'    => 'high',
+		'fields'      => array(
+			array(
+				'label'		=> 'Map',
+				'id'		=> $prefix . 'embed_map',
+				'type'		=> 'text',
+				'std'		=> '',
+				'desc'		=> 'Copy embed map code from google map account'
+			),
+			array(
+				'label'		=> 'Tour by Destination',
+				'id'		=> $prefix . 'related_tour',
+				'type'		=> 'taxonomy-select',
+				'std'		=> '',
+				'desc'		=> 'Select destination name to show related tour',
+				'taxonomy'	=> 'tour_destination'
 			),
 		)
 	);
@@ -482,6 +511,9 @@ function custom_meta_boxes() {
 		ot_register_meta_box( $post_type_gallery );
 
 		$template_file = rw_maybe_include();
+		if ( $template_file == 'templates/page-destination.php' ) {
+			ot_register_meta_box( $destination_template_settings ); 
+		}
 		if ( $template_file == 'templates/page-attraction.php' ) {
 			ot_register_meta_box( $attraction_template_settings ); 
 		}

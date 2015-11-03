@@ -115,7 +115,7 @@ class WPSP_Sub_Nav_Widget extends WP_Widget {
     function form( $instance ) {
         //Set up some default widget settings.
         $defaults = array( 
-            'title' => __('Tour SUMMARY', 'wpsp_admin'),
+            'title' => __('All Destinations', 'wpsp_admin'),
             'parent_page' => 0,
             'depth' => 0,
             );
