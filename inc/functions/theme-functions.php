@@ -410,9 +410,11 @@ function wpsp_email_notify( $inquiry_info, $is_operator = false, $is_tour_design
 	}
 	
 	$body = '<html><body style="background-color:#4caf50; padding-bottom:30px;">';
+	
 	$body .= '<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#333333"><tbody>';
   	$body .= '<tr>';
     $body .= '<td align="center" valign="top">';
+    
     $body .= '<table width="640" border="0" cellpadding="0" cellspacing="0" align="center"><tbody>';
     $body .= '<tr>';
     $body .= '<td width="170" valign="middle" style="padding-bottom:10px; padding-top:10px;">';
@@ -424,9 +426,11 @@ function wpsp_email_notify( $inquiry_info, $is_operator = false, $is_tour_design
     $body .= '</td>';
     $body .= '</tr>';
     $body .= '</tbody></table>';
+    
     $body .= '</td>';
     $body .= '</tr>';
     $body .= '</tbody></table>';
+
 	$body .= '<div style="max-width:640px; margin: 30px auto 20px; background-color:#fff; padding:30px;">';
 	$body .= '<table cellpadding="5" width="100%"><tbody>';
 	$body .= '<tr>';
