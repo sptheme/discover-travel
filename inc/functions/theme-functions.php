@@ -332,6 +332,26 @@ function wpsp_get_tour_by_term( $args, $cols ) {
 }
 endif;
 
+
+if ( !function_exists( 'wpsp_send_tour_design' ) ) :
+/**
+ * Send all information of tour design form to tour oporators via ajax
+ * @since Discover Travel 1.0.0
+ */
+function wpsp_send_tour_design() {
+	
+	parse_str ($_POST['tours'], $inquiry_info);
+	
+	wpsp_email_notify( $inquiry_info, true, true );//confirm to operator
+	wpsp_email_notify( $inquiry_info, false, true ); //confirm to traveller
+	
+	die();
+}
+add_action('wp_ajax_nopriv_wpsp_send_tour_design', 'wpsp_send_tour_design'); //executes for users that are not logged in.
+add_action('wp_ajax_wpsp_send_tour_design', 'wpsp_send_tour_design');
+endif;
+
+
 if ( !function_exists( 'wpsp_send_tour_inquiry' ) ) :
 /**
  * Send all information of tour inquiry form to tour oporators via ajax
@@ -355,10 +375,10 @@ if ( !function_exists( 'wpsp_email_notify' ) ) :
  * Email notification to Traveller/guest and Operator 
  * @since Discover Travel 1.0.0
  */
-function wpsp_email_notify( $inquiry_info, $is_operator = false ) {
+function wpsp_email_notify( $inquiry_info, $is_operator = false, $is_tour_design = flase ) {
 	
 	if ( $is_operator ) {
-		$subject = esc_html__( 'Tour request:', 'discovertravel' ) . ' ' . $inquiry_info['firstname'] . ' ' . $inquiry_info['lastname'];
+		$subject = ( $is_tour_design ) ? esc_html__( 'Tour design:', 'discovertravel' ) . ' ' . $inquiry_info['fullname'] : esc_html__( 'Tour inquiry:', 'discovertravel' ) . ' ' . $inquiry_info['firstname'] . ' ' . $inquiry_info['lastname'];
 	} else {
 		$subject = get_bloginfo('name') . ' ' . esc_html__( 'Notification', 'discovertravel' );
 	}
@@ -376,6 +396,18 @@ function wpsp_email_notify( $inquiry_info, $is_operator = false ) {
 	}
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+	if ( $is_tour_design ) {
+		$custom_destination = '';
+		foreach ( $inquiry_info['destinations'] as $destination ) :
+			$custom_destination .=	$destination . ', ';
+		endforeach;
+
+		$custom_style = '';
+		foreach ( $inquiry_info['tourstyles'] as $style ) :
+			$custom_style .=	$style . ', ';
+		endforeach;
+	}
 	
 	$body = '<html><body style="background-color:#4caf50; padding-bottom:30px;">';
 	$body .= '<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#333333"><tbody>';
@@ -388,7 +420,7 @@ function wpsp_email_notify( $inquiry_info, $is_operator = false ) {
     $body .= '</td>';
     $body .= '<td width="470" valign="middle" style="padding-bottom:10px; padding-top:10px; text-align:right;">';
     $body .= '<font style="font-size:18px;line-height:18px" face="Arial, sans-serif" color="#ffffff">' . esc_html__( 'Hotline Support: ', 'discovertravel' ) . '<font color="#ffffff" style="text-decoration:none;color:#ffffff">' . ot_get_option('operator-hotline') . '</font></font>';
-    $body .= '<br><font style="font-size:14px;line-height:14px" face="Arial, sans-serif" color="#cccccc"><a href="mailto:' . $operator_email . '" style="text-decoration:none"><font color="#cccccc">' . $operator_email . '</font></a></font>';
+    $body .= '<br><font style="font-size:14px;line-height:14px" face="Arial, sans-serif" color="#cccccc"><a href="mailto:' . ot_get_option('operator-email') . '" style="text-decoration:none"><font color="#cccccc">' . ot_get_option('operator-email') . '</font></a></font>';
     $body .= '</td>';
     $body .= '</tr>';
     $body .= '</tbody></table>';
@@ -401,21 +433,41 @@ function wpsp_email_notify( $inquiry_info, $is_operator = false ) {
 	$body .= '<td colspan="2">';
 	if ( $is_operator ) {
 		$body .= '<p>' . esc_html__( 'Dear Operators', 'discovertravel' ) . ',</p>';
-		$body .= '<p>' . esc_html__( 'Please review tour inquiry from', 'discovertravel' ) . ' <strong>' . $inquiry_info['title'] . ' ' . $inquiry_info['firstname'] . '</strong> listed bellow:</p>';	
-	} else {	
-		$body .= '<p>' . esc_html__( 'Dear', 'discovertravel' ) . ' ' . $inquiry_info['title'] . ' ' . $inquiry_info['firstname'] . ',</p>';	
+		if ( $is_tour_design ) {
+			$body .= '<p>' . esc_html__( 'Please review the tour customized from ', 'discovertravel' ) . ' <strong>' . $inquiry_info['fullname'] . esc_html__( ' listed bellow', 'discovertravel' ) . '</p>';	
+		} else {
+			$body .= '<p>' . esc_html__( 'Please review tour inquiry from ', 'discovertravel' ) . ' <strong>' . $inquiry_info['title'] . ' ' . $inquiry_info['firstname'] . '</strong>' . esc_html__( ' listed bellow', 'discovertravel' ) . '</p>';	
+		}
+			
+	} else {
+		if ( $is_tour_design ) {
+			$body .= '<p>' . esc_html__( 'Dear', 'discovertravel' ) . ' ' . $inquiry_info['fullname'] . ',</p>';
+		} else {
+			$body .= '<p>' . esc_html__( 'Dear', 'discovertravel' ) . ' ' . $inquiry_info['title'] . ' ' . $inquiry_info['firstname'] . ',</p>';	
+		}
 		$body .= '<p>' . esc_html__( 'Thank you very much for your kind interest in booking Tours in Cambodia with', 'discovertravel' ) . ' ' . get_bloginfo('name') . '. ' . esc_html__( 'One of our travel consultants will proceed your request and get back to you with BEST OFFERS quickly.', 'discovertravel' ) . '</p>';
 		$body .= '<p>' . esc_html__( 'Please kindly check all the information of your inquiry again as below:', 'discovertravel' ) . '</p>';
 	}
 	$body .= '</td>';
 	$body .= '</tr>';
 	$body .= '<tr>';
-	$body .= '<td colspan="2"><div style="border-bottom:1px solid #ccc; padding-bottom:5px;"><strong>' . esc_html__( 'Tour inquiry summary:', 'discovertravel' ) . '</strong></div></td>';
+	$body .= '<td colspan="2"><div style="border-bottom:1px solid #ccc; padding-bottom:5px;"><strong>' . ( $is_tour_design ) ? esc_html__( 'Tour design summary:', 'discovertravel' ) : esc_html__( 'Tour inquiry summary:', 'discovertravel' ) . '</strong></div></td>';
 	$body .= '</tr>';
-	$body .= '<tr>';
-	$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Tour name: ', 'discovertravel' ) . '</strong></td>';
-	$body .= '<td width="70%">' . $inquiry_info['tourname'] . ' ' . $inquiry_info['tourday'] . ' ' . esc_html__( 'Days', 'discovertravel' ) . '/' . ($inquiry_info['tourday'] - 1) . ' ' . esc_html__( 'Nights', 'discovertravel' ) . '</td>';
-	$body .= '</tr>';
+	if ( !$is_tour_design ) {
+		$body .= '<tr>';
+		$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Tour name: ', 'discovertravel' ) . '</strong></td>';
+		$body .= '<td width="70%">' . $inquiry_info['tourname'] . ' ' . $inquiry_info['tourday'] . ' ' . esc_html__( 'Days', 'discovertravel' ) . '/' . ($inquiry_info['tourday'] - 1) . ' ' . esc_html__( 'Nights', 'discovertravel' ) . '</td>';
+		$body .= '</tr>';
+	} else {
+		$body .= '<tr>';
+		$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Destinations: ', 'discovertravel' ) . '</strong></td>';
+		$body .= '<td width="70%">' . $custom_destination . '' . $inquiry_info['otherdestination'] . '</td>';
+		$body .= '</tr>';
+		$body .= '<tr>';
+		$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Tour styles: ', 'discovertravel' ) . '</strong></td>';
+		$body .= '<td width="70%">' . $custom_style . '</td>';
+		$body .= '</tr>';
+	}
 	$body .= '<tr>';
 	$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Will travel as: ', 'discovertravel' ) . '</strong></td>';
 	$body .= '<td width="70%" style="text-transform: capitalize;">' . $inquiry_info['tourtype'] . '</td>';
@@ -460,7 +512,11 @@ function wpsp_email_notify( $inquiry_info, $is_operator = false ) {
 	$body .= '</tr>';
 	$body .= '<tr>';
 	$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Full Name: ', 'discovertravel' ) . '</strong></td>';
-	$body .= '<td width="70%"><strong>' . $inquiry_info['title'] . ' ' . $inquiry_info['firstname'] . ' ' . $inquiry_info['lastname'] . '</strong></td>';
+	if ( $is_tour_design ) {
+		$body .= '<td width="70%"><strong>' . $inquiry_info['fullname'] . '</strong></td>';
+	} else {
+		$body .= '<td width="70%"><strong>' . $inquiry_info['title'] . ' ' . $inquiry_info['firstname'] . ' ' . $inquiry_info['lastname'] . '</strong></td>';
+	}
 	$body .= '</tr>';
 	$body .= '<tr>';
 	$body .= '<td style="padding-left:30px;width:30%;color:#666666;"><strong>' . esc_html__( 'Email: ', 'discovertravel' ) . '</strong></td>';

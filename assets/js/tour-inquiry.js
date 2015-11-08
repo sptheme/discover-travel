@@ -1,5 +1,55 @@
 jQuery(document).ready(function($){
 
+    // Send custom tour design
+    $('.send-tour-design').steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        onStepChanging: function (event, currentIndex, newIndex) {
+            // Allways allow step back to the previous step even if the current step is not valid!
+            if (currentIndex > newIndex) {
+                return true;
+            }
+            $('.send-tour-design').validate().settings.ignore = ":disabled,:hidden";
+            return $('.send-tour-design').valid();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex) {
+                    resizeJquerySteps();
+        },
+        onFinishing: function (event, currentIndex) {
+            $('.send-tour-design').validate().settings.ignore = ":disabled";
+            return $('.send-tour-design').valid();
+        },
+        onFinished: function (event, currentIndex) {
+            var data = {
+                action:"wpsp_send_tour_design",
+                tours : $('.send-tour-design').serialize()
+            };
+            $.post( dt_tour_inquiry_obj.ajaxURL, data, function(response) {
+                $('.send-tour-design').hide();
+                $('#result').show().html(response);
+            });
+            return false;
+        }
+    }).validate({
+        errorPlacement: function errorPlacement(error, element) { element.before(error); },
+        rules: {
+            email: {
+                email: true
+            },
+            phone: {
+                number: true
+            }
+        },
+    });    
+
+    function resizeJquerySteps() {
+        $('.wizard .content').animate({ height: $('.body.current').outerHeight() }, "slow");
+    }
+
+    $(window).resize(resizeJquerySteps);
+
+
     var $type_family = $('.type-family'),
         $type_group = $('.type-group'),
         $people_addon = $('.people-addon');
@@ -26,7 +76,6 @@ jQuery(document).ready(function($){
 
     // Show/hide people addon
     $('.people').click( function() {
-		
 		var $tour_type = $(this).attr('id');
 		$('.people').removeClass('active');
     	$(this).addClass('active');
@@ -51,7 +100,7 @@ jQuery(document).ready(function($){
     });
 
     // Departure date
-    $('#departure-date').datepicker();
+    $('#departure-date, #start-date').datepicker();
     $('#flexible-date').change( function() {
         $('#is-flexible-date').toggleClass('active');
     });
@@ -90,6 +139,21 @@ jQuery(document).ready(function($){
                 $('#result').show().html(response);
             });
             return false;
+        }
+    });
+
+    // Scroll to design form
+    $('.custom-tour-btn a').click( function(){
+        $('html, body').animate({
+            scrollTop: $("#custom-tour-design .section-title").offset().top
+        }, 1000);
+    });
+
+    // custom checkbox
+    $(".checkbox-item").change(function() {
+        $(this).parent().toggleClass('active');
+        if(this.checked) {
+            console.log( $(this).val() );
         }
     });
 	

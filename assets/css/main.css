@@ -872,6 +872,13 @@ a.more-info:hover {
     line-height: 15px;
     font-weight: 400;
 }
+#custom-tour-design {
+    background: #f8f8f8 url(../images/bg-design-tour.jpg) center top repeat-x;
+    padding: 10px 0 50px;
+}
+#custom-tour-design .section-title {
+    text-align: center;
+}
 #all-tours-style {
     background: url(../images/bg-all-tour-style.jpg) center top repeat;
     width: 100%;
@@ -1527,7 +1534,10 @@ h4.itenerary-title {
 }
 #tour-inquiry-form input[type="text"],
 #tour-inquiry-form input[type="email"],
-#tour-inquiry-form select {
+#tour-inquiry-form select,
+#tour-design-form input[type="text"],
+#tour-design-form input[type="email"],
+#tour-design-form select {
     width: 100%;
     height: 36px;
     line-height: 36px;
@@ -1556,10 +1566,14 @@ h4.itenerary-title {
 /* error */
 #tour-inquiry-form input[type="text"].error,
 #tour-inquiry-form input[type="email"].error,
-#tour-inquiry-form select.error {
+#tour-inquiry-form select.error,
+#tour-design-form input[type="text"].error,
+#tour-design-form input[type="email"].error,
+#tour-design-form select.error {
     border:1px solid #db4437;
 }
-#tour-inquiry-form label.error {
+#tour-inquiry-form label.error,
+#tour-design-form label.error {
     display: none!important;
 }
 /* Result */
@@ -1671,7 +1685,9 @@ h4.itenerary-title {
     background-position: -374px -749px;
 }
 input[type=radio].default-radio {
-    display: none;
+    visibility: hidden;
+    height: 0;
+    display: block!important;
 }
 span.radio-image {
     background: url(../images/radio.png) no-repeat;
@@ -1687,7 +1703,7 @@ span.radio-image {
     line-height: 20px;
     background-repeat: no-repeat;
     background-position: 0 1px;
-    font-size: 16px;
+    font-size: 13px;
     vertical-align: middle;
     cursor: pointer;
     margin: 5px 0 5px 10px;
@@ -1718,13 +1734,17 @@ span.radio-image {
      -moz-border-radius: 6px;
           border-radius: 6px;
 }
+.people-addon select {
+    height: 24px!important;
+}
 .people-addon select + p {
     font-size: 11px;
     margin-bottom: 0;
 }
 /* Departure date */
-.departure-date {
-    background: url(../images/sprite.png) 105% -795px no-repeat;
+.departure-date,
+.start-date {
+    background: #ffffff url(../images/sprite.png) 105% -795px no-repeat;
     cursor: pointer;
     padding-right: 20px;
 }
@@ -1743,6 +1763,52 @@ span.radio-image {
 #personal-info div[class*="col-"] {
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+/* Tour design form */
+#tour-design-form input[type="text"],
+#tour-design-form input[type="email"],
+#tour-design-form select {
+    margin-bottom: 10px;
+}
+#tour-design-form .start-date {
+    padding-right: 20px!important;
+}
+.custom-checkbox .checkbox-item {
+    visibility: hidden;
+    height: 0;
+    display: block!important;
+}
+.custom-checkbox label {
+    display: block!important;
+}
+.custom-checkbox figure {
+    position: relative;
+    background-color: #333;
+    cursor: pointer;
+}
+.custom-checkbox figure i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -18px;
+    margin-top: -18px;
+    font-size: 36px;
+    color:#26ad5e;
+    display: none;
+}
+.custom-checkbox .fa-check-square {
+    margin-right: 5px;
+    color: #999;
+}
+.custom-checkbox .active figure img {
+    opacity: .3;
+}
+.custom-checkbox .active figure i {
+    display: block;
+}
+.custom-checkbox .active .fa-check-square {
+    color:#26ad5e;
 }
 
 @media only screen and (min-width: 768px) {
@@ -1764,6 +1830,12 @@ span.radio-image {
     }
     .people-addon.is-family {
         margin-right: 125px;
+    }
+    #tour-design-form .people {
+        width: 160px;
+    }
+     #tour-design-form .people-addon.is-family {
+        margin-right: 100px;
     }
     .departure-date,
     .flexible-date label,
@@ -1795,6 +1867,15 @@ span.radio-image {
     .people-addon.is-family {
         margin-right: 220px;
     }
+    #tour-design-form .people {
+        width: 100px;
+    }
+    #tour-design-form .people label {
+        padding-left: 0;
+    }
+    #tour-design-form .people-addon.is-family {
+        margin-right: 20px;
+    }
     .departure-date,
     .flexible-date label,
     .manual-date {
@@ -1816,6 +1897,15 @@ span.radio-image {
     }
     .people-addon.is-family {
         margin-right: 275px;
+    }
+    #tour-design-form .people {
+        width: 120px;
+    }
+    #tour-design-form .people label {
+        padding-left: 10;
+    }
+    #tour-design-form .people-addon.is-family {
+        margin-right: 60px;
     }
     .departure-date,
     .flexible-date label,

@@ -52,7 +52,7 @@ get_header(); ?>
             <h2><?php echo $meta['wpsp_cambodia_title'][0]; ?></h2>
         </header>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-md-6">
             	<?php echo $meta['wpsp_cambodia_desc'][0]; ?>
             	<?php $args = array(
             				'include'	=> array( $meta['wpsp_destination_1'][0], $meta['wpsp_destination_2'][0], $meta['wpsp_destination_3'][0] )
@@ -83,13 +83,23 @@ get_header(); ?>
             	<?php endif; ?>
             </div> <!-- .col-lg-6 -->
 
-            <div class="col-lg-6 map">
+            <div class="col-md-6 map">
                 <a href="<?php echo $meta['wpsp_cambodia_map_link'][0]; ?>"><img src="<?php echo $meta['wpsp_cambodia_map'][0]; ?>"></a>
             </div> <!-- .col-lg-6 -->
         </div> <!-- .row -->    
         <center><a class="button color-green" href="<?php echo $meta['wpsp_cambodia_btn_link'][0]; ?>"><?php echo esc_html__( 'View All Destination', 'discovertravel' ); ?></a></center>
     	</div> <!-- .container --> 
     </section> <!-- #country-highlight -->
+
+    <section id="custom-tour-design">
+        <div class="container">
+        <header class="section-title">
+            <h2><?php echo $meta['wpsp_tour_design_title'][0]; ?></h2>
+            <p class="description"><?php echo $meta['wpsp_tour_design_desc'][0]; ?></p>
+        </header>
+        <?php get_template_part( 'partials/tour-design' ); ?>
+        </div>
+    </section> <!-- #tour-design-form -->
 
 	<section id="all-tours-style">
         <div class="container">

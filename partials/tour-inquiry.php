@@ -86,7 +86,7 @@
 				</select>
 				<p>Babies (0-2)</p>
 			</div> <!-- .kids -->
-		</div>
+		</div><!-- .people-addon -->
 	</fieldset> 
 	<fieldset class="clearfix">
 		<legend>Tour Class</legend>

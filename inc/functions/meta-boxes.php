@@ -188,6 +188,81 @@ function custom_meta_boxes() {
 				'desc'		=> 'Copy and past URL/link for button',
 			),
 			array(
+				'label'       => 'Tour design',
+				'id'          => 'tab_tour_design',
+				'type'        => 'tab'
+			),
+			array(
+				'label'		=> 'Heading title',
+				'id'		=> $prefix . 'tour_design_title',
+				'type'		=> 'text',
+				'std'		=> 'Create Your Own Dream Itinerary',
+				'desc'		=> '',
+			),
+			array(
+				'label'		=> 'Description',
+				'id'		=> $prefix . 'tour_design_desc',
+				'type'		=> 'textarea_simple',
+				'std'		=> 'My Cambodia Travel can help you in three easy step to custom your tour in Cambodia',
+				'desc'		=> '',
+				'rows'      => '3',
+			),
+			array(
+				'label'		=> 'Step 1',
+				'id'		=> $prefix . 'step_title_1',
+				'type'		=> 'text',
+				'std'		=> 'Your destination',
+				'desc'		=> 'Title of step 1',
+			),
+			array(
+				'id'		=> 'step_destinations',
+				'label'		=> 'Dstination photos',
+				'desc'		=> '',
+				'type'		=> 'list-item',
+				'choices'	=> array(),
+				'settings'	=> array(
+					array(
+						'id'		=> 'thumbnail',
+						'label'		=> 'Upload destination photo',
+						'desc'		=> '',
+						'std'		=> '',
+						'type'		=> 'upload',
+						'choices'	=> array()
+					)
+				)
+			),
+			array(
+				'label'		=> 'Step 2',
+				'id'		=> $prefix . 'step_title_2',
+				'type'		=> 'text',
+				'std'		=> 'Your mood',
+				'desc'		=> 'Title of step 2',
+			),
+			array(
+				'id'		=> 'step_mood',
+				'label'		=> 'Tour style photos',
+				'desc'		=> '',
+				'type'		=> 'list-item',
+				'choices'	=> array(),
+				'settings'	=> array(
+					array(
+						'id'		=> 'thumbnail',
+						'label'		=> 'Upload photo',
+						'desc'		=> '',
+						'std'		=> '',
+						'type'		=> 'upload',
+						'choices'	=> array()
+					)
+				)
+			),
+			array(
+				'label'		=> 'Step 3',
+				'id'		=> $prefix . 'step_title_3',
+				'type'		=> 'text',
+				'std'		=> 'Your detail',
+				'desc'		=> 'Title of step 3',
+			),
+			array(
 				'label'       => 'Tour style',
 				'id'          => 'tab_tour_style_icon',
 				'type'        => 'tab'

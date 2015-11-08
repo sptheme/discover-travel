@@ -138,6 +138,9 @@ function dt_scripts() {
 	}
 
 	if ( is_singular( 'cp_tour' ) || is_front_page() || is_home() || is_page_template( 'templates/page-home.php' ) ) {
+		wp_enqueue_style( 'jquery-step', WPSP_CSS_DIR_URI . 'jquery.steps.css' );
+		wp_enqueue_script( 'jquery-step', WPSP_JS_DIR_URI . 'vendor/jquery.steps.min.js', array(), '20120206', true );
+
 		wp_enqueue_style( 'jquery-ui-datepicker-style' , '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css');
 		wp_enqueue_script('jquery-ui-datepicker');
 		wp_enqueue_script( 'dt-tour-inquiry', WPSP_JS_DIR_URI . 'tour-inquiry.js', array(), '20120206', true );
