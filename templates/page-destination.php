@@ -31,21 +31,20 @@ get_header(); ?>
       </div> <!-- .attractive-map -->
       <?php endif; ?>
 
-		<div class="tour-tax-term box-shadow">
-      <?php $country_name = esc_html__( 'Cambodia', 'discovertravel' );
+		<?php $args = array(
+     				'child_of'		=> icl_object_id($post->ID,'page',true),
+               'parent'     => icl_object_id($post->ID,'page',true),
+               'hierarchical'	=> 0
+		         );
+
+     	$child_pages = get_pages( $args ) ?>
+        	
+      <?php if ( !empty( $child_pages ) ) : ?>
+      <div class="tour-tax-term box-shadow">
+         <?php $country_name = esc_html__( 'Cambodia', 'discovertravel' );
          $parents = get_post_ancestors( $post->ID ); 
          $attraction_title = ( count($parents) < '1' ) ? $country_name : get_the_title(); ?>
-         <h5><?php echo esc_html__( 'All Destination in ', 'discovertravel' ) . $attraction_title; ?></h5>
-        
-        	<?php $args = array(
-        				'child_of'		=> $post->ID,
-                  'parent'     => $post->ID,
-                  'hierarchical'	=> 0
-			);
-
-        		$child_pages = get_pages( $args ) ?>
-        	
-        	<?php if ( !empty( $child_pages ) ) : ?>
+         <h5><?php echo esc_html__( 'All Destination in ', 'discovertravel' ) . $attraction_title; ?></h5>  
 
         	<div class="row">	
         	<?php foreach ( $child_pages as $page ) : ?>
@@ -68,8 +67,8 @@ get_header(); ?>
              </div> <!-- .col-sm-4 -->
         	<?php endforeach; ?>
         	</div> <!-- .row -->
-        	<?php endif; ?>
-      </div> <!-- .tour-tax-term -->
+      </div> <!-- .tour-tax-term -->   
+      <?php endif; ?>
 
       <?php $term = get_post_meta( $post->ID, 'wpsp_related_tour', true );
          wpsp_tour_by_taxonomy( 'tour_destination', $term, 'col-sm-6', 2); ?>

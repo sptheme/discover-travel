@@ -8,6 +8,50 @@
  * @since 		Discover Travel 1.0.0
  */
 
+if( !function_exists('wpsp_languages_switcher')) :
+/*
+ * Language switcher with WPML plugin
+ */	
+function wpsp_languageswitcherer(){
+	if(function_exists('icl_get_languages')) {
+		$languages = icl_get_languages('skip_missing=1');
+		if( 1 < count($languages) ){
+			echo '<nav class="language col-sm-4"><ul>';
+			//echo '<li>' . __('Language: ', 'sptheme') . '</li>';
+			foreach($languages as $l){
+				echo '<li class="'.$l['language_code'].'">';
+
+				if(!$l['active']) echo '<a href="'.$l['url'].'" title="' . $l['native_name'] . '">';
+				echo '<img src="' . $l['country_flag_url'] . '" alt="' . $l['native_name'] . '" />';
+				if(!$l['active']) echo '</a>';
+
+				echo '</li>';
+			}
+			echo '</ul></nav>';
+		}
+	} else {
+		return null; // Activate WMPL plugin
+	}
+}
+endif;
+
+if( !function_exists('wpsp_lang_object_ids')) :
+/*
+ * Translating arrays of IDs with WPML plugin
+ */	
+function wpsp_lang_object_ids($ids_array, $type) {
+	if(function_exists('icl_object_id')) {
+		$res = array();
+		foreach ($ids_array as $id) {
+			$xlat = icl_object_id($id,$type,false);
+			if(!is_null($xlat)) $res[] = $xlat;
+		}
+		return $res;
+	} else {
+		return $ids_array;
+	}
+}
+endif;
 
 if ( ! function_exists( 'wpsp_tour_price' ) ) :
 /**

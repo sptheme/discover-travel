@@ -25,12 +25,7 @@
 <div id="page" class="hfeed site">
 	<div id="top-bar" class="site-top">
         <div class="container clearfix">
-            <nav class="language col-sm-4">
-                <ul>
-                    <li class="en"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/demo/en.png"></li>
-                    <li class="kh"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/demo/kh.png"></a></li>
-                </ul>
-            </nav>    
+            <?php wpsp_languageswitcherer(); ?>    
 
             <nav id="top-navigation" class="top-navigation" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
                 <?php wp_nav_menu( array( 'theme_location' => 'top', 'menu_id' => 'top-menu' ) ); ?>

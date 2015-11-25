@@ -54,8 +54,12 @@ get_header(); ?>
         <div class="row">
             <div class="col-md-6">
             	<?php echo $meta['wpsp_cambodia_desc'][0]; ?>
-            	<?php $args = array(
-            				'include'	=> array( $meta['wpsp_destination_1'][0], $meta['wpsp_destination_2'][0], $meta['wpsp_destination_3'][0] )
+            	<?php 
+                    $destination_1 = $meta['wpsp_destination_1'][0];
+                    $destination_2 = $meta['wpsp_destination_2'][0];
+                    $destination_3 = $meta['wpsp_destination_3'][0];
+                    $args = array(
+            				'include'	=> wpsp_lang_object_ids( array($destination_1, $destination_2, $destination_3) , 'page' )
             			);
             		$pages = get_pages( $args ); ?>
             	<?php if (!empty( $pages ) ) : ?>

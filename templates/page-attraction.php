@@ -53,15 +53,15 @@ get_header(); ?>
 			// get page level 1 
 			if ( count($parents) <= '1' ) {
 				$args = array(
-					'parent'		=> $post->ID,
-					'child_of'		=> $post->ID,
+					'parent'		=> icl_object_id($post->ID,'page',true),
+					'child_of'		=> icl_object_id($post->ID,'page',true),
 					'hierarchical'	=> 0
 		    	); 
 	    	}
 	    	// default is sibling pages
 	    	$defaults = array(
 				'child_of'	=> $parents[0],
-				'exclude' => $post->ID
+				'exclude' => icl_object_id($post->ID,'page',true)
 				);
 			$args = wp_parse_args( $args, $defaults );
 			extract( $args );
