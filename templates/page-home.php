@@ -120,7 +120,7 @@ get_header(); ?>
         			$terms = get_terms( 'tour_style', $args ); ?>
                     <ul class="tour-style-icon-60 row">
                     <?php foreach ( $terms as $term ) : 
-                    		echo '<li class="col-xs-4 col-md-2"><a href="' . get_term_link( $term ) . '" title="' . $term->name . '"><i class="sprite ' . get_option( 'tour_style_'.$term->term_id.'_icon', '' ) . '"></i>' . $term->name . '</a></li>';
+                    		echo '<li class="col-xs-6 col-md-3"><a href="' . get_term_link( $term ) . '" title="' . $term->name . '"><i class="sprite ' . get_option( 'tour_style_'.$term->term_id.'_icon', '' ) . '"></i>' . $term->name . '</a></li>';
                     	endforeach; ?>	
                     </ul>
                 </div>
