@@ -48,7 +48,7 @@ class WPSP_Sub_Nav_Widget extends WP_Widget {
         extract( $args, EXTR_SKIP );
 
         $title = apply_filters('widget_title', $instance['title'] );
-        $parent_page = $instance['parent_page'];
+        $parent_page = icl_object_id($instance['parent_page'], true);
         $depth = $instance['depth'];
         $order_by = $instance['order_by'];
         $sort_by = $instance['sort_by'];
