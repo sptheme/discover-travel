@@ -386,6 +386,9 @@ p.copyright {
 .tour-style-icon .home-stay {
     background-position: -204px -173px;
 }
+.tour-style-icon .special-interest {
+    background-position: -238px -173px;
+}
 
 .tour-style-icon .island {
     background-position: 0 -207px;
@@ -452,6 +455,9 @@ p.copyright {
 }
 .tour-style-icon a:hover .home-stay {
     background-position: -472px -173px;   
+}
+.tour-style-icon a:hover .special-interest {
+    background-position: -506px -173px;   
 }
 
 .tour-style-icon a:hover .island {
@@ -537,6 +543,9 @@ p.copyright {
 .tour-style-icon-60 .home-stay {
     background-position: -420px -275px;
 }
+.tour-style-icon-60 .special-interest {
+    background-position: -491px -275px;
+}
     /* Hover */
     .tour-style-icon-60 a:hover .best-offer {
         background-position: 0 -485px;
@@ -558,6 +567,9 @@ p.copyright {
     }
     .tour-style-icon-60 a:hover .home-stay {
         background-position: -420px -485px;
+    }
+    .tour-style-icon-60 a:hover .special-interest {
+        background-position: -491px -485px;
     }
 
 .tour-style-icon-60 .island {
