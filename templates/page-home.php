@@ -60,6 +60,7 @@ get_header(); ?>
                     $destination_3 = $meta['wpsp_destination_3'][0];
                     $args = array(
             				'include'	=> wpsp_lang_object_ids( array($destination_1, $destination_2, $destination_3) , 'page' )
+                            //'include' => array($destination_1, $destination_2, $destination_3)
             			);
             		$pages = get_pages( $args ); ?>
             	<?php if (!empty( $pages ) ) : ?>
