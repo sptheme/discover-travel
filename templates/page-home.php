@@ -54,15 +54,15 @@ get_header(); ?>
         <div class="row">
             <div class="col-md-6">
             	<?php echo $meta['wpsp_cambodia_desc'][0]; ?>
-            	<?php 
+            	<!--<?php 
                     $destination_1 = $meta['wpsp_destination_1'][0];
                     $destination_2 = $meta['wpsp_destination_2'][0];
                     $destination_3 = $meta['wpsp_destination_3'][0];
                     $args = array(
             				'include'	=> wpsp_lang_object_ids( array($destination_1, $destination_2, $destination_3) , 'page' )
-                            //'include' => array($destination_1, $destination_2, $destination_3)
             			);
-            		$pages = get_pages( $args ); ?>
+            		$pages = get_pages( $args ); 
+                    $pages = array($destination_1, $destination_2, $destination_3); ?>
             	<?php if (!empty( $pages ) ) : ?>
             	<div class="row">
                 <?php foreach ( $pages as $page ) : ?>
@@ -84,8 +84,8 @@ get_header(); ?>
                         </div>	
                     </div>
                 <?php endforeach; ?>    
-                </div> <!-- .row -->    
-            	<?php endif; ?>
+                </div>   
+            	<?php endif; ?> -->
             </div> <!-- .col-lg-6 -->
 
             <div class="col-md-6 map">

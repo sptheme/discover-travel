@@ -121,7 +121,7 @@ function custom_meta_boxes() {
 				'label'		=> 'Amount of tours',
 				'id'		=> $prefix . 'tour_amount',
 				'type'		=> 'numeric-slider',
-				'min_max_step'=> '1,6,1',
+				'min_max_step'=> '1,18,1',
 				'std'		=> '',
 				'desc'		=> 'Set number of tour for this tour style. Between 1 and 6 tours',
 			),
