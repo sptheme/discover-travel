@@ -28,6 +28,7 @@ load_template( WPSP_INCS . 'custom-posts/taxonomy-style.php' );
 load_template( WPSP_INCS . 'custom-posts/taxonomy-day.php' );
 load_template( WPSP_INCS . 'custom-posts/taxonomy-slider.php' );
 load_template( WPSP_INCS . 'custom-posts/taxonomy-gallery.php' );
+load_template( WPSP_INCS . 'custom-posts/taxonomy-multi-country.php' );
 //load_template( WPSP_INCS . 'custom-posts/taxonomy-team.php' );
 
 	
