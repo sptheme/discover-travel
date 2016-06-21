@@ -405,8 +405,8 @@ function wpsp_send_tour_inquiry() {
 	
 	parse_str ($_POST['tours'], $inquiry_info);
 	
-	wpsp_email_notify( $inquiry_info, true ); //confirm to operator
-	wpsp_email_notify( $inquiry_info ); //confirm to traveller
+	wpsp_email_notify( $inquiry_info, true, false ); //confirm to operator
+	wpsp_email_notify( $inquiry_info, false, false ); //confirm to traveller
 	
 	die();
 }
